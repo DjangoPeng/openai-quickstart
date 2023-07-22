@@ -1,12 +1,12 @@
 # OpenAI Quickstart
 
-This project is designed as a one-stop learning resource for anyone interested in large language models and their application in Artificial Intelligence Governance and Control (AIGC) scenarios. By providing theoretical foundations, development basics, and hands-on examples, this project offers comprehensive guidance on these cutting-edge topics.
+This project serves as a comprehensive learning resource for those interested in large language models and their use in Artificial Intelligence Governance and Control (AIGC). It covers theoretical foundations, development basics, and practical examples, encompassing an array of cutting-edge topics.
 
 ## Features
 
-- **Theory and Development Basics of Large Language Models**: Deep dive into the inner workings of large language models like GPT-4, including their architecture, training methods, applications, and more.
+- **Theory and Development Basics of Large Language Models**: Delve into the intricacies of large language models like GPT-4, learning about their architecture, training methods, applications, and more.
 
-- **AIGC Application Development with LangChain**: Hands-on examples and tutorials using LangChain to develop AIGC applications, demonstrating the practical application of large language models.
+- **AIGC Application Development with LangChain**: Hands-on examples and tutorials for developing AIGC applications with LangChain, showcasing the practical use of large language models.
 
 ## Getting Started
 
