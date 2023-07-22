@@ -1,0 +1,7 @@
+openai
+tiktoken
+pandas
+matplotlib
+plotly
+scikit-learn
+gradio==3.37.0
