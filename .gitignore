@@ -162,3 +162,5 @@ cython_debug/
 
 # Presentation files of course
 openai_api/data/fine_food_reviews_with_embeddings_1k_2146.csv
+
+.DS_Store
