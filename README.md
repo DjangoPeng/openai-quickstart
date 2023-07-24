@@ -1,7 +1,7 @@
 # OpenAI Quickstart
 
 <p align="center">
-    <br> English | <a href="README-CN.md">中文</a>
+    <br> English | <a href="./openai_api/README-CN.md">中文</a>
 </p>
 
 
