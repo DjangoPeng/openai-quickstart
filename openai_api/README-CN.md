@@ -1,5 +1,9 @@
 # OpenAI 快速入门指南
 
+<p align="center">
+    <br> <a href="README.md">English</a> | 中文
+</p>
+
 本项目旨在指导你进行使用 OpenAI API 的应用开发的初始步骤。它将帮助你设置开发环境，理解如何使用API，并为你提供一个用于交互式开发的Jupyter Lab记事本。
 
 ## 开始使用
