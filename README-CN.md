@@ -1,7 +1,7 @@
 # OpenAI 快速入门
 
 <p align="center">
-    <br> <a href="README.md">English | 中文</a>
+    <br> <a href="README.md">English</a> | 中文
 </p>
 
 
