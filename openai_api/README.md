@@ -1,5 +1,9 @@
 # OpenAI Quickstart Guide
 
+<p align="center">
+    <br> English | <a href="README-CN.md">中文</a>
+</p>
+
 This project guides you through the initial steps of developing applications using the OpenAI API. It will help you setup your development environment, understand how to use the API, and provide you with a working Jupyter Lab notebook for interactive development.
 
 ## Getting Started
