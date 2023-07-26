@@ -1,10 +1,12 @@
-# 环境说明
+# 笔者环境说明
 Windows11
 Python版本：3.10.6
 IDE：PyCharm
-# python虚拟环境创建
+# 运行
+## python虚拟环境创建
 **前提：系统安装了python，虚拟环境的创建是根据当前系统安装的python版本来进行创建的**
 **建议使用python虚拟环境，避免和其他项目的python库版本冲突**
+**APIKEY：运行前编辑 embedding_demo_ui.py，在开头部分更改自己的APIKEY，openai.api_key = ''**
 
 ```cmd
 # 在当前项目下新建python虚拟环境
