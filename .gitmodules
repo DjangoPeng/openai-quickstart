@@ -1,0 +1,3 @@
+[submodule "openai-translator"]
+	path = openai-translator
+	url = https://github.com/DjangoPeng/openai-translator.git
