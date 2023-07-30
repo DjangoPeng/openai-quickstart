@@ -6,6 +6,7 @@ import time
 from model import Model
 from utils import LOG
 
+
 class OpenAIModel(Model):
     def __init__(self, model: str, api_key: str):
         self.model = model

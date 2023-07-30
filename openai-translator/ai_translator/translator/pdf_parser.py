@@ -45,8 +45,6 @@ class PDFParser:
                     page.add_content(text_content)
                     LOG.debug(f"[raw_text]\n {cleaned_raw_text}")
 
-
-
                 # Handling tables
                 if tables:
                     table = TableContent(tables)

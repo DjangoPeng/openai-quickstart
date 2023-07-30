@@ -1,5 +1,6 @@
 from book import ContentType
 
+
 class Model:
     def make_text_prompt(self, text: str, target_language: str) -> str:
         return f"翻译为{target_language}：{text}"
