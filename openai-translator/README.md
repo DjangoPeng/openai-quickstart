@@ -88,7 +88,7 @@ You can also specify the settings directly on the command line. Here's an exampl
 ```bash
 # Set your api_key as an env variable
 export OPENAI_API_KEY="sk-xxx"
-python ai_translator/main.py --model_type OpenAIModel --api_key $OPENAI_API_KEY --book your_book.pdf 
+python ai_translator/main.py --model_type OpenAIModel --openai_api_key $OPENAI_API_KEY --book your_book.pdf 
 ```
 
 And an example of how to use the GLM model:
