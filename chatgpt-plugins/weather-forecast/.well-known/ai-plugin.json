@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Weather Forecast",
+    "name_for_model": "weather",
+    "description_for_human": "Global Weather Forecast. You can ask the current or future weather of any city around the world.",
+    "description_for_model": "Plugin for managing weather forecasts. Search current weather and future forecasts through provided api.",
+    "auth": {
+      "type": "none"
+    },
+    "api": {
+      "type": "openapi",
+      "url": "http://localhost:5002/openapi.yaml"
+    },
+    "logo_url": "http://localhost:5002/logo.png",
+    "contact_email": "pjt73651@gmail.com",
+    "legal_info_url": "http://example.com/legal"
+  }
+  
