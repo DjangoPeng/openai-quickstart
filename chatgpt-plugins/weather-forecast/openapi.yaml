@@ -1,0 +1,64 @@
+openapi: 3.0.1
+info:
+  title: Weather Forecast
+  description: A Plugin that allows the user to forecast current or future weather using ChatGPT. Ask for clarification if a user request is ambiguous.
+  version: 'v1'
+servers:
+  - url: http://localhost:5002
+paths:
+  /weather/current:
+    get:
+      operationId: getCurrentWeather
+      summary: Get the current weather of the city
+      parameters:
+      - in: query
+        name: city
+        schema:
+            type: string
+        required: true
+        description: The city and state, e.g. San Francisco, CA.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getCurrentWeather'
+  /weather/forecast:
+    get:
+      operationId: getNDayWeatherForecast
+      summary: Forecast the weather of the city in a few days
+      parameters:
+      - in: query
+        name: num_days
+        schema:
+            type: integer
+        required: true
+        description: The number of days to forecast, e.g. 5
+      - in: query
+        name: city
+        schema:
+            type: string
+        required: true
+        description: The city and state, e.g. San Francisco, CA.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getNDayWeatherForecast'
+components:
+  schemas:
+    getCurrentWeather:
+      type: object
+      properties:
+        weather:
+          type: string
+          description: The current weather of the city.
+    getNDayWeatherForecast:
+      type: object
+      properties:
+        weather:
+          type: string
+          description: The weather of the city in a few days.
