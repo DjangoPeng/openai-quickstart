@@ -5,6 +5,7 @@ import sys
 LOG_FILE = "translation.log"
 ROTATION_TIME = "02:00"
 
+
 class Logger:
     def __init__(self, name="translation", log_dir="logs", debug=False):
         if not os.path.exists(log_dir):
@@ -20,6 +21,7 @@ class Logger:
         # Add file handler with a specific log level and timed rotation
         logger.add(log_file_path, rotation=ROTATION_TIME, level="DEBUG")
         self.logger = logger
+
 
 LOG = Logger(debug=True).logger
 

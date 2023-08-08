@@ -1,5 +1,6 @@
 from .content import Content
 
+
 class Page:
     def __init__(self):
         self.contents = []

@@ -3,10 +3,12 @@ from enum import Enum, auto
 from PIL import Image as PILImage
 from utils import LOG
 
+
 class ContentType(Enum):
     TEXT = auto()
     TABLE = auto()
     IMAGE = auto()
+
 
 class Content:
     def __init__(self, content_type, original, translation=None):
@@ -37,8 +39,9 @@ class TableContent(Content):
 
         # Verify if the number of rows and columns in the data and DataFrame object match
         if len(data) != len(df) or len(data[0]) != len(df.columns):
-            raise ValueError("The number of rows and columns in the extracted table data and DataFrame object do not match.")
-        
+            raise ValueError(
+                "The number of rows and columns in the extracted table data and DataFrame object do not match.")
+
         super().__init__(ContentType.TABLE, df)
 
     def set_translation(self, translation, status):
