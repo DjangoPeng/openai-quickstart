@@ -1,7 +1,7 @@
 import requests
 import simplejson
 
-from model import Model
+from ai_translator.model import Model
 
 class GLMModel(Model):
     def __init__(self, model_url: str, timeout: int):

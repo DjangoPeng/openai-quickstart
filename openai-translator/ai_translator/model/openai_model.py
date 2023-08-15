@@ -3,8 +3,8 @@ import requests
 import simplejson
 import time
 
-from model import Model
-from utils import LOG
+from ai_translator.model import Model
+from ai_translator.utils import LOG
 
 class OpenAIModel(Model):
     def __init__(self, model: str, api_key: str):

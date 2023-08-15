@@ -1,4 +1,3 @@
-import os
 from reportlab.lib import colors, pagesizes, units
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
@@ -7,8 +6,8 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
 )
 
-from book import Book, ContentType
-from utils import LOG
+from ai_translator.book import Book, ContentType
+from ai_translator.utils import LOG
 
 class Writer:
     def __init__(self):

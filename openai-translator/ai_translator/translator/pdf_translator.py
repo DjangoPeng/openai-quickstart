@@ -1,8 +1,8 @@
 from typing import Optional
-from model import Model
-from translator.pdf_parser import PDFParser
-from translator.writer import Writer
-from utils import LOG
+from ai_translator.model import Model
+from ai_translator.translator.pdf_parser import PDFParser
+from ai_translator.translator.writer import Writer
+from ai_translator.utils import LOG
 
 class PDFTranslator:
     def __init__(self, model: Model):
@@ -19,7 +19,7 @@ class PDFTranslator:
                 LOG.debug(prompt)
                 translation, status = self.model.make_request(prompt)
                 LOG.info(translation)
-                
+
                 # Update the content in self.book.pages directly
                 self.book.pages[page_idx].contents[content_idx].set_translation(translation, status)
 

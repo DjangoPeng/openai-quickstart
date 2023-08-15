@@ -1,4 +1,4 @@
-from book import ContentType
+from ai_translator.book import ContentType
 
 class Model:
     def make_text_prompt(self, text: str, target_language: str) -> str:
