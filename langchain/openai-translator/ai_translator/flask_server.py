@@ -43,8 +43,6 @@ def translation():
 
             # 返回翻译后的文件
             return send_file(output_file_path, as_attachment=True)
-
-
     except Exception as e:
         response = {
             'status': 'error',
@@ -69,7 +67,5 @@ def initialize_translator():
 if __name__ == "__main__":
     # 初始化 translator
     initialize_translator()
-
+    # 启动 Flask Web Server
     app.run(host="0.0.0.0", port=5000, debug=True)
-
-
