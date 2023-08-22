@@ -8,3 +8,5 @@ pandas
 loguru
 openai
 langchain
+gradio
+flask
