@@ -17,7 +17,7 @@ def translation(input_file, source_language, target_language):
     return output_file_path
 
 def launch_gradio():
-        
+
     iface = gr.Interface(
         fn=translation,
         title="OpenAI-Translator v2.0(PDF 电子书翻译工具)",
@@ -33,7 +33,6 @@ def launch_gradio():
     )
 
     iface.launch(share=True, server_name="0.0.0.0")
-
 
 def initialize_translator():
     # 解析命令行
