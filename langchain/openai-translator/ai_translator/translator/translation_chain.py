@@ -14,8 +14,12 @@ class TranslationChain:
         
         # 翻译任务指令始终由 System 角色承担
         template = (
-            """You are a translation expert, proficient in various languages. \n
-            Translates {source_language} to {target_language} and the translated content has the style of {style}."""
+            """You are a highly experienced and capable translator, proficient in various languages. \n
+            You will identify the language of the text and translate it step by step:
+            Step 1. Provide a direct translation of the text from {source_language} to {target_language}.
+            Step 2. Provide an explanation of any colloquialisms and differences between the direct translation and 
+                     a comprehensible translation that may be confusing to a non-native speaker of the source language.
+            Step 3. Understanding the translation content of Step 2 and convert it into the style of {style}."""
         )
         system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
