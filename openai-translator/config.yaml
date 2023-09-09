@@ -3,7 +3,7 @@ OpenAIModel:
   api_key: "your_openai_api_key"
 
 GLMModel:
-  model_url: "your_chatglm_model_url"
+  model_url: "https://api.replicate.com/v1/models/replicate/a16z-infra/llama13b-v2-chat"
   timeout: 300
 
 common:

@@ -18,6 +18,7 @@ class GLMModel(Model):
             response.raise_for_status()
             response_dict = response.json()
             translation = response_dict["response"]
+            print(f"glm_model: ***")
             return translation, True
         except requests.exceptions.RequestException as e:
             raise Exception(f"请求异常：{e}")

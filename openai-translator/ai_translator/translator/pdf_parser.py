@@ -10,6 +10,8 @@ class PDFParser:
         pass
 
     def parse_pdf(self, pdf_file_path: str, pages: Optional[int] = None) -> Book:
+        pages = int(pages)
+        print(f"III pages={pages}")
         book = Book(pdf_file_path)
 
         with pdfplumber.open(pdf_file_path) as pdf:
