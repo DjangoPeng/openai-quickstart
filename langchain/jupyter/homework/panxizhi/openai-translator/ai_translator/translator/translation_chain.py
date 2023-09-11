@@ -1,4 +1,5 @@
 from langchain.chat_models import ChatOpenAI
+from langchain.llms import ChatGLM 
 from langchain.chains import LLMChain
 
 from langchain.prompts.chat import (
@@ -8,6 +9,18 @@ from langchain.prompts.chat import (
 )
 
 from utils import LOG
+
+def createLLM(model_name: str = "gpt-3.5-turbo", verbose: bool = True):
+    if model_name == 'chatglm6b' :
+        chat = ChatGLM(endpoint_url='http://127.0.0.1:8000',
+                        max_token=80000,
+                        history=[],
+                        top_p=0.9,
+                        model_kwargs={"sample_model_args": False }, verbose=verbose)
+    else: 
+        chat = ChatOpenAI(model_name=model_name, temperature=0, verbose=verbose)
+    
+    return chat
 
 class TranslationChain:
     def __init__(self, model_name: str = "gpt-3.5-turbo", verbose: bool = True):
@@ -29,7 +42,7 @@ class TranslationChain:
         )
 
         # 为了翻译结果的稳定性，将 temperature 设置为 0
-        chat = ChatOpenAI(model_name=model_name, temperature=0, verbose=verbose)
+        chat = createLLM(model_name, verbose)
 
         self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
 
