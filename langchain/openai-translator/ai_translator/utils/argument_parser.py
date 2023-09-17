@@ -9,6 +9,8 @@ class ArgumentParser:
         self.parser.add_argument('--output_file_format', type=str, help='The file format of translated book. Now supporting PDF and Markdown')
         self.parser.add_argument('--source_language', type=str, help='The language of the original book to be translated.')
         self.parser.add_argument('--target_language', type=str, help='The target language for translating the original book.')
+        self.parser.add_argument('--openai_api_key', type=str, help='The API key for OpenAIModel. Required if model_type is "OpenAIModel".')
+        self.parser.add_argument('--style',type=str, help='Type a writing style you like to be translated/None ')
 
     def parse_arguments(self):
         args = self.parser.parse_args()
