@@ -92,20 +92,26 @@ class Writer:
             # Iterate over the pages and contents
             for page in book.pages:
                 for content in page.contents:
-                    if content.status:
-                        if content.content_type == ContentType.TEXT:
-                            # Add translated text to the Markdown file
-                            text = content.translation
-                            output_file.write(text + '\n\n')
+                    
+                    if isinstance(content, str):
+                        markdown_image_syntax = f"![images]({content})"
+                        #print('here',markdown_image_syntax)
+                        output_file.write(markdown_image_syntax + "\n")
+                    else:
+                        if content.status:
+                            if content.content_type == ContentType.TEXT:
+                                # Add translated text to the Markdown file
+                                text = content.translation
+                                output_file.write(text + '\n\n')
 
-                        elif content.content_type == ContentType.TABLE:
-                            # Add table to the Markdown file
-                            table = content.translation
-                            header = '| ' + ' | '.join(str(column) for column in table.columns) + ' |' + '\n'
-                            separator = '| ' + ' | '.join(['---'] * len(table.columns)) + ' |' + '\n'
-                            # body = '\n'.join(['| ' + ' | '.join(row) + ' |' for row in table.values.tolist()]) + '\n\n'
-                            body = '\n'.join(['| ' + ' | '.join(str(cell) for cell in row) + ' |' for row in table.values.tolist()]) + '\n\n'
-                            output_file.write(header + separator + body)
+                            elif content.content_type == ContentType.TABLE:
+                                # Add table to the Markdown file
+                                table = content.translation
+                                header = '| ' + ' | '.join(str(column) for column in table.columns) + ' |' + '\n'
+                                separator = '| ' + ' | '.join(['---'] * len(table.columns)) + ' |' + '\n'
+                                # body = '\n'.join(['| ' + ' | '.join(row) + ' |' for row in table.values.tolist()]) + '\n\n'
+                                body = '\n'.join(['| ' + ' | '.join(str(cell) for cell in row) + ' |' for row in table.values.tolist()]) + '\n\n'
+                                output_file.write(header + separator + body)
 
                 # Add a page break (horizontal rule) after each page except the last one
                 if page != book.pages[-1]:

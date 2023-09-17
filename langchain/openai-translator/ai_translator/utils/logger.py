@@ -21,7 +21,7 @@ class Logger:
         logger.add(log_file_path, rotation=ROTATION_TIME, level="DEBUG")
         self.logger = logger
 
-LOG = Logger(debug=True).logger
+LOG = Logger(debug=False).logger
 
 if __name__ == "__main__":
     log = Logger().logger

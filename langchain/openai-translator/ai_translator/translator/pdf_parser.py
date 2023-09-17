@@ -20,13 +20,14 @@ class PDFParser:
                 pages_to_parse = pdf.pages
             else:
                 pages_to_parse = pdf.pages[:pages]
-
+            img_num = 1
             for pdf_page in pages_to_parse:
                 page = Page()
 
                 # Store the original text content
                 raw_text = pdf_page.extract_text()
                 tables = pdf_page.extract_tables()
+                images_in_page = pdf_page.images
 
                 # Remove each cell's content from the original text
                 for table_data in tables:
@@ -52,7 +53,20 @@ class PDFParser:
                     table = TableContent(tables)
                     page.add_content(table)
                     LOG.debug(f"[table]\n{table}")
-
+                    
+           
+                if images_in_page:
+                    page_height = pdf_page.height
+                    for image in images_in_page:
+                        image_bbox = (image['x0'], page_height - image['y1'], image['x1'], page_height - image['y0'])
+                        cropped_page = pdf_page.crop(image_bbox)
+                        image_obj = cropped_page.to_image(resolution=200)
+                        #img_name = (pdf_file_path.replace('test.pdf', f'images/'))+str(img_num)+".jpg"
+                        img_name = (pdf_file_path.replace('test.pdf', ''))+str(img_num)+".jpg"
+                        #image_obj.save("tests/1.jpg")
+                        image_obj.save(img_name)
+                        page.contents.append(img_name)
+                        img_num+=1
                 book.add_page(page)
 
         return book
