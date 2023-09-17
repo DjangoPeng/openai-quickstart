@@ -13,6 +13,7 @@ class PDFTranslator:
     def translate_pdf(self,
                     input_file: str,
                     output_file_format: str = 'markdown',
+                    translate_style: str = "novel",
                     source_language: str = "English",
                     target_language: str = 'Chinese',
                     pages: Optional[int] = None):
@@ -22,7 +23,7 @@ class PDFTranslator:
         for page_idx, page in enumerate(self.book.pages):
             for content_idx, content in enumerate(page.contents):
                 # Translate content.original
-                translation, status = self.translate_chain.run(content, source_language, target_language)
+                translation, status = self.translate_chain.run(content, translate_style, source_language, target_language)
                 # Update the content in self.book.pages directly
                 self.book.pages[page_idx].contents[content_idx].set_translation(translation, status)
         
