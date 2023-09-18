@@ -10,11 +10,12 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
+from langchain.prompts import PromptTemplate
 
 api_key = os.getenv("AZURE_OPENAI_API_KEY")
 api_base = "https://hzf-gpt.openai.azure.com/"
 api_version = "2023-07-01-preview"
-open_ai_type = 'azure'
+open_ai_type = "azure"
 
 
 def getOpenAIEmbeddingObject() -> OpenAIEmbeddings:
@@ -30,19 +31,32 @@ def getOpenAIEmbeddingObject() -> OpenAIEmbeddings:
     )
     return embeddings
 
+
 def getChatOpenAIObject() -> ChatOpenAI:
     """
     获取ChatOpenAI对象
     """
-    openai.api_type = 'azure'
-    openai.api_version=api_version
+    openai.api_type = "azure"
+    openai.api_version = api_version
     chat = ChatOpenAI(
         deployment_id="gpt-4",  # 部署名称
         openai_api_base=api_base,
         openai_api_key=api_key,
-        temperature=0
+        temperature=0,
     )
     return chat
+
+
+def get_qa_chain_prompt() -> PromptTemplate:
+    template = """Use the following pieces of context to answer the question at the end. 
+    If you don't know the answer, just say that you don't know, don't try to make up an answer. 
+    Use three sentences maximum and keep the answer as concise as possible. 
+    Always say "thanks for asking!" at the end of the answer. 
+    {context}
+    Question: {question}
+    Helpful Answer:"""
+    return PromptTemplate.from_template(template)
+
 
 def initialize_sales_bot(vector_store_dir: str = "real_estates_sale"):
     db = FAISS.load_local(vector_store_dir, getOpenAIEmbeddingObject())
@@ -56,6 +70,7 @@ def initialize_sales_bot(vector_store_dir: str = "real_estates_sale"):
             search_type="similarity_score_threshold",
             search_kwargs={"score_threshold": 0.8},
         ),
+        chain_type_kwargs={"prompt": get_qa_chain_prompt()},
     )
     # 返回向量数据库的检索结果
     SALES_BOT.return_source_documents = True
@@ -81,20 +96,20 @@ def sales_chat(message, history):
         return "这个问题我要问问领导"
 
 
-def launch_gradio():
-    demo = gr.ChatInterface(
-        fn=sales_chat,
-        title="房产销售",
-        # retry_btn=None,
-        # undo_btn=None,
-        chatbot=gr.Chatbot(height=600),
-    )
+demo = gr.ChatInterface(
+    fn=sales_chat,
+    title="房产销售",
+    # retry_btn=None,
+    # undo_btn=None,
+    chatbot=gr.Chatbot(height=600),
+)
 
+
+def launch_gradio():
     demo.launch(share=False, server_name="0.0.0.0")
 
 
-if __name__ == "__main__":
-    # 初始化房产销售机器人
-    initialize_sales_bot()
-    # 启动 Gradio 服务
-    launch_gradio()
+# 初始化房产销售机器人
+initialize_sales_bot()
+# 启动 Gradio 服务
+launch_gradio()
