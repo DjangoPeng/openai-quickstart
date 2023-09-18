@@ -1,6 +1,8 @@
 import gradio as gr
 import random
 import time
+import os
+import openai
 
 from typing import List
 
@@ -9,19 +11,57 @@ from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
 
+api_key = os.getenv("AZURE_OPENAI_API_KEY")
+api_base = "https://hzf-gpt.openai.azure.com/"
+api_version = "2023-07-01-preview"
+open_ai_type = 'azure'
 
-def initialize_sales_bot(vector_store_dir: str="real_estates_sale"):
-    db = FAISS.load_local(vector_store_dir, OpenAIEmbeddings())
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
-    
-    global SALES_BOT    
-    SALES_BOT = RetrievalQA.from_chain_type(llm,
-                                           retriever=db.as_retriever(search_type="similarity_score_threshold",
-                                                                     search_kwargs={"score_threshold": 0.8}))
+
+def getOpenAIEmbeddingObject() -> OpenAIEmbeddings:
+    """
+    获取Azure OpenAI Embeddings对象
+    """
+    embeddings = OpenAIEmbeddings(
+        deployment="embedding",  # 部署名称
+        openai_api_base=api_base,
+        openai_api_type=open_ai_type,
+        openai_api_key=api_key,
+        chunk_size=1,  # 限定并发数为1
+    )
+    return embeddings
+
+def getChatOpenAIObject() -> ChatOpenAI:
+    """
+    获取ChatOpenAI对象
+    """
+    openai.api_type = 'azure'
+    openai.api_version=api_version
+    chat = ChatOpenAI(
+        deployment_id="gpt-4",  # 部署名称
+        openai_api_base=api_base,
+        openai_api_key=api_key,
+        temperature=0
+    )
+    return chat
+
+def initialize_sales_bot(vector_store_dir: str = "real_estates_sale"):
+    db = FAISS.load_local(vector_store_dir, getOpenAIEmbeddingObject())
+
+    llm = getChatOpenAIObject()
+
+    global SALES_BOT
+    SALES_BOT = RetrievalQA.from_chain_type(
+        llm,
+        retriever=db.as_retriever(
+            search_type="similarity_score_threshold",
+            search_kwargs={"score_threshold": 0.8},
+        ),
+    )
     # 返回向量数据库的检索结果
     SALES_BOT.return_source_documents = True
 
     return SALES_BOT
+
 
 def sales_chat(message, history):
     print(f"[message]{message}")
@@ -39,7 +79,7 @@ def sales_chat(message, history):
     # 否则输出套路话术
     else:
         return "这个问题我要问问领导"
-    
+
 
 def launch_gradio():
     demo = gr.ChatInterface(
@@ -50,7 +90,8 @@ def launch_gradio():
         chatbot=gr.Chatbot(height=600),
     )
 
-    demo.launch(share=True, server_name="0.0.0.0")
+    demo.launch(share=False, server_name="0.0.0.0")
+
 
 if __name__ == "__main__":
     # 初始化房产销售机器人
