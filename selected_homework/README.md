@@ -10,6 +10,8 @@
 | Hugh | OpenAI-Translator 2.0 | 1.基于 Antd 的图形化界面<br />2.以 API 形式提供翻译服务支持<br /> 3.对多种语言的支持 | [ Github - 后端API](https://github.com/Hughdw/openai-quickstart/blob/ai_translator_extend/openai-translator/ai_translator/app.py) <br />[Github - 前端图形化界面](https://github.com/Hughdw/openai-quickstart/tree/ai_translator_extend/openai-translator/webapp/web)|
 | Hugh | OpenAI-Translator 风格化翻译 | 在 Gradio 图形化界面基础上，支持风格化翻译 | [GitHub Repo](https://github.com/Hughdw/openai-quickstart/blob/openai_translator_gradio_style_extend/langchain/openai-translator/ai_translator/gradio_server_by_blocks.py) |
 | Hugh | 销售机器人多场景切换 | 生成多场景的向量数据，通过 Gradio 的 Radio 组件切换场景 | [GitHub Repo](https://github.com/Hughdw/openai-quickstart/blob/openai_translator_gradio_style_extend/langchain/sales_chatbot/chatbot.py) |
+| Yang Cao| OpenAI-Translator V1 | [GitHub Repo](https://github.com/sycao5/openai-quickstart/blob/yang-project1/openai-translator/ProjectSubmission.md) |
+| Yang Cao| 电器销售机器人 notebook | [GitHub Repo](https://github.com/sycao5/openai-quickstart/blob/yang-translator-v2/langchain/sales_chatbot/sales_electrons.ipynb)|
 | richzw | OpenAI-Translator 2.0 | - 基于HTML图形用户界面 <br /> - 以 API 形式提供翻译服务 <br /> - 优化prompt支持多语言且稳定输出结果  |  [GitHub Repo](https://github.com/richzw/openai-quickstart/tree/feat/translator/openai-translator/ai_translator) |
 | richzw | OpenAI-Translator 风格化翻译 | Gradio 图形化界面基础上，通过优化prompt支持风格化翻译 | [GitHub Repo](https://github.com/richzw/openai-quickstart/tree/main/langchain/openai-translator) |
 | richzw | 销售机器人应用于不同的销售场景  | 通过MultiRetrievalQAChain来实现对于不同场景问题分别进行回答 | [GitHub Repo](https://github.com/richzw/openai-quickstart/blob/main/langchain/sales_chatbot/sales_chatbot.py） |
