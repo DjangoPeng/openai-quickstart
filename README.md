@@ -15,6 +15,8 @@ This project is designed as a one-stop learning resource for anyone interested i
 
 - **GenAI Application Development with LangChain**: Hands-on examples and tutorials using LangChain to develop GenAI applications, demonstrating the practical application of large language models(**AutoGPT, RAG-chatbot, Machine Translation**)
 
+- **LLM Tech Stack and Ecosystem**: Data privacy and legal compliance, GPU Technology Selection Guide, Hugging Face quick start, ChatGLM usage.
+
 ## Getting Started
 
 You can start by cloning this repository to your local machine:
