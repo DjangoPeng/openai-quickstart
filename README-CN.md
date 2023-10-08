@@ -9,9 +9,13 @@
 
 ## 特性
 
-- **大型语言模型的理论和开发基础**：深入探究像 GPT-4 这样的大型语言模型的内部运作，包括其架构，训练方法，应用等。
+- **大语言模型的理论和开发基础**：深入探讨BERT和GPT系列等大型语言模型的内部工作原理，包括它们的架构、训练方法、应用等。
 
-- **用 LangChain 开发 AIGC 应用**：使用 LangChain 开发 AIGC 应用的实践示例和教程，展示了大型语言模型的实际应用。
+- **基于OpenAI的二次开发**：OpenAI的Embedding、GPT-3.5、GPT-4模型的快速上手和应用，以及函数调用（Function Calling）和ChatGPT插件等最佳实践
+
+**使用LangChain进行GenAI应用开发**：通过实例和教程，利用LangChain开发GenAI应用程序，展示大型语言模型（AutoGPT、RAG-chatbot、机器翻译）的实际应用。
+
+**LLM技术栈与生态**：数据隐私与法律合规性，GPU技术选型指南，Hugging Face快速入门指南，ChatGLM的使用。
 
 ## 入门
 
