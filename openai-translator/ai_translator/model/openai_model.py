@@ -40,10 +40,10 @@ class OpenAIModel(Model):
                     time.sleep(60)
                 else:
                     raise Exception("Rate limit reached. Maximum attempts exceeded.")
-            except requests.exceptions.RequestException as e:
-                raise Exception(f"请求异常：{e}")
             except requests.exceptions.Timeout as e:
                 raise Exception(f"请求超时：{e}")
+            except requests.exceptions.RequestException as e:
+                raise Exception(f"请求异常：{e}")
             except simplejson.errors.JSONDecodeError as e:
                 raise Exception("Error: response is not valid JSON format.")
             except Exception as e:
