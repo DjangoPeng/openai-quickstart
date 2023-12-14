@@ -30,6 +30,7 @@ Then navigate to the directory and follow the individual module instructions to 
 
 ## Setting Up the Development Environment
 
+- Python v3.10+
 - Python Environment Management: [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
 - Interactive Python Development Environment: [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
 - Framework for Large Model Applications: [LangChain](https://python.langchain.com/docs/get_started/installation)
