@@ -27,6 +27,14 @@ git clone https://github.com/DjangoPeng/openai-quickstart.git
 
 Then navigate to the directory and follow the individual module instructions to get started.
 
+
+## Setting Up the Development Environment
+
+- Python Environment Management: [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
+- Interactive Python Development Environment: [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
+- Framework for Large Model Applications: [LangChain](https://python.langchain.com/docs/get_started/installation)
+- [OpenAI Python SDK](https://github.com/openai/openai-python?tab=readme-ov-file#installation)
+
 ## Schedule
 
 | Lesson     | Description                                                                                                                                                                                                        | Course Materials                                                                          | Events                                                                    |
