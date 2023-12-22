@@ -1,0 +1,5 @@
+model_name: "gpt-3.5-turbo"
+input_file: "tests/test.pdf"
+output_file_format: "markdown"
+source_language: "English"
+target_language: "Chinese"
