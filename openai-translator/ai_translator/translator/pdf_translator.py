@@ -3,6 +3,7 @@ from model import Model
 from translator.pdf_parser import PDFParser
 from translator.writer import Writer
 from utils import LOG
+from book import ContentType
 
 class PDFTranslator:
     def __init__(self, model: Model):
@@ -15,6 +16,8 @@ class PDFTranslator:
 
         for page_idx, page in enumerate(self.book.pages):
             for content_idx, content in enumerate(page.contents):
+                if content.content_type != ContentType.TEXT and content.content_type != ContentType.TABLE:
+                    continue
                 prompt = self.model.translate_prompt(content, target_language)
                 LOG.debug(prompt)
                 translation, status = self.model.make_request(prompt)
