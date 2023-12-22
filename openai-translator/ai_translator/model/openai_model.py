@@ -45,10 +45,12 @@ class OpenAIModel(Model):
             except openai.APIConnectionError as e:
                 print("The server could not be reached")
                 print(e.__cause__)  # an underlying Exception, likely raised within httpx.            except requests.exceptions.Timeout as e:
+                raise Exception(f"The server could not be reached：{e}")
             except openai.APIStatusError as e:
                 print("Another non-200-range status code was received")
                 print(e.status_code)
                 print(e.response)
+                raise Exception(f"Another non-200-range status code was received：{e}")
             except Exception as e:
                 raise Exception(f"发生了未知错误：{e}")
         return "", False
