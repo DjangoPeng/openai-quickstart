@@ -4,10 +4,10 @@ from langchain.vectorstores import FAISS
 from langchain.document_loaders import TextLoader
 import os
 
-with open("F:\\pythonProject\\myenv\\Include\\real_estates_sale\\real_estate_sales_data.txt", encoding="utf-8") as f:
+with open("real_estate_sales_data.txt", encoding="utf-8") as f:
     real_estate_sales = f.read()
 
-with open("F:\\pythonProject\\myenv\\Include\\real_estates_sale\\mobile_sales_data.txt", encoding="utf-8") as f:
+with open("real_estate_sales_data.txt", encoding="utf-8") as f:
     mobile_sales_data = f.read()
 
 from langchain.text_splitter import CharacterTextSplitter
