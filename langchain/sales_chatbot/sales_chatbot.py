@@ -1,8 +1,4 @@
 import gradio as gr
-import random
-import time
-
-from typing import List
 
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
