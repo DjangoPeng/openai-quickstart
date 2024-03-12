@@ -7,13 +7,18 @@ class ContentType(Enum):
     TEXT = auto()
     TABLE = auto()
     IMAGE = auto()
+    LINE = auto()
 
 class Content:
-    def __init__(self, content_type, original, translation=None):
+    def __init__(self, content_type, original, coordinates=None, font=None, fontsize=None, fontcolor=None, translation=None):
         self.content_type = content_type
         self.original = original
         self.translation = translation
         self.status = False
+        self.coordinates = coordinates  # Expected format: (x1, y1, x2, y2)
+        self.font = font
+        self.fontsize = fontsize
+        self.fontcolor = fontcolor
 
     def set_translation(self, translation, status):
         if not self.check_translation_type(translation):
@@ -29,7 +34,6 @@ class Content:
         elif self.content_type == ContentType.IMAGE and isinstance(translation, PILImage.Image):
             return True
         return False
-
 
 class TableContent(Content):
     def __init__(self, data, translation=None):
@@ -75,3 +79,26 @@ class TableContent(Content):
 
     def get_original_as_str(self):
         return self.original.to_string(header=False, index=False)
+
+class ImageContent(Content):
+    def __init__(self, coordinates, imagepath):
+        super().__init__(ContentType.IMAGE, None, coordinates)
+        self.status = True
+        self.imagepath = imagepath
+    
+    def load_image(self):
+        """Loads and returns the image using PIL."""
+        return PILImage.open(self.imagepath)
+
+    def __str__(self):
+        return f"Image at {self.coordinates} from {self.imagepath}"
+
+class LineContent(Content):
+    def __init__(self, coordinates, line_width, line_color):
+        super().__init__(ContentType.LINE, None, coordinates)
+        self.status = True
+        self.line_width = line_width
+        self.line_color = line_color
+
+    def __str__(self):
+        return f"Line from {self.start_coords} to {self.end_coords} with width {self.line_width} and color {self.line_color}"
