@@ -99,6 +99,14 @@ export GLM_MODEL_URL="http://xxx:xx"
 python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book tests/test.pdf
 ```
 
+Pycharm Run Configurations Options:
+
+| Option | Value                                                                    |
+|--------|--------------------------------------------------------------------------|
+| Working Directory | `/${PROJECT_PATH}/openai-quickstart/openai-translator` |
+| Script Options | `--config config.yaml --model_type OpenAIModel`                          |
+
+ 
 ## License
 
 This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for details.
