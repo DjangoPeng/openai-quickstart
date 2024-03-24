@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Translator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- 引入 jQuery UI 库 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        input[type="file"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        select {
+            margin-bottom: 15px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Translator</h1>
+    <form id="translationForm" action="/translate" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="file">Select PDF File:</label>
+            <input type="file" id="file" name="file" accept=".pdf" required>
+        </div>
+        <div>
+            <label for="source_lang">Source Language:</label>
+            <select id="source_lang" name="source_lang" required>
+                <option value="English">English</option>
+                <option value="中文">中文</option>
+                <option value="日本語">日本語</option>
+            </select>
+        </div>
+        <div>
+            <label for="target_format">Target Format:</label>
+            <select id="target_format" name="target_format" required>
+                <option value="PDF">PDF</option>
+                <option value="markdown">Markdown</option>
+            </select>
+        </div>
+        <div>
+            <label for="target_lang">Target Language:</label>
+            <select id="target_lang" name="target_lang" required>
+                <option value="English">English</option>
+                <option value="中文">中文</option>
+                <option value="日本語">日本語</option>
+            </select>
+        </div>
+        <button type="submit">Translate</button>
+    </form>
+    <div id="resultDialog" style="display: none;">
+        <p id="resultMessage"></p>
+        <p id="filePath"></p>
+    </div>
+   <script>
+        $(document).ready(function() {
+            $('#translationForm').submit(function(event) {
+                event.preventDefault();
+                var formData = new FormData($(this)[0]);
+
+                $.ajax({
+                    url: '/translate',
+                    type: 'POST',
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        var message = response.message;
+                        var filePath = response.output_file_path;
+
+                        $('#resultMessage').text(message);
+                        $('#filePath').text(filePath);
+
+                        $('#resultDialog').dialog({
+                            modal: true,
+                            buttons: {
+                                "Close": function() {
+                                    $(this).dialog('close');
+                                }
+                            },
+                            close: function(event, ui) {
+                                $(this).dialog('destroy').remove();
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        var errorMessage = xhr.responseJSON.error;
+                        alert("Error: " + errorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <div class="footer">
+        <p>Powered by OpenAI</p>
+        <p>Developed by Tolson.Wang</p>
+    </div>
+</body>
+</html>
