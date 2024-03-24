@@ -59,7 +59,7 @@ def translate():
 
         result = {
             "message": "Translation successful",
-            "output_file_path": os.path.join(app.config['UPLOAD_FOLDER'], output_file_path)
+            "output_file_path": 'File saved as ' + os.path.dirname(os.path.abspath(__file__)) + '/' + output_file_path
         }
         return jsonify(result)
 
