@@ -1,20 +1,24 @@
-测试数据
-这个数据集包含了两个测试样本，由OpenAI的人工智能语言模型ChatGPT提供。
-这些样本包括一个Markdown表格和一个英文文本段落，可以用来测试支持文本和表格格式的英译中翻译软件。
-文本测试
-快速的棕色狐狸跳过懒狗。这个全字母句包含了英语字母表中的每一个字母。全字母句经常被用来测试字体、键盘和其他与文本相关的工具。除了英语，还有许多其他语言的全字母句。有些全字母句由于语言的独特特征而更难构造。
-表格测试
+テストデータ
+このデータセットには、OpenAIのAI言語モデルであるChatGPTによって提供された2つのテストサンプルが含まれています。
+これらのサンプルには、マークダウンテーブルと英文テキストが含まれており、テキストおよびテーブル形式の両方をサポートする
+英中翻訳ソフトウェアをテストするために使用することができます。
+テキストテスト
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+テーブルテスト
 
-| 水果 | 颜色 | 价格（美元） |
+| Fruit | Color | Price (USD) |
 | --- | --- | --- |
-| Apple | Red | 1.20 |
-| Banana | Yellow | 0.50 |
-| Orange | Orange | 0.80 |
-| Strawberry | Red | 2.50 |
-| Blueberry | Blue | 3.00 |
-| Kiwi | Green | 1.00 |
-| Mango | Orange | 1.50 |
-| Grape | Purple | 2.00 |
+| 果物 | 赤 | 1.20 |
+| バナナ | 黄 | 0.50 |
+| オレンジ | オレンジ | 0.80 |
+| いちご | 赤 | 2.50 |
+| ブルーベリー | 青 | 3.00 |
+| キウイ | 緑 | 1.00 |
+| マンゴー | オレンジ | 1.50 |
+| ぶどう | 紫 | 2.00 |
 
 ---
 
