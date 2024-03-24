@@ -8,6 +8,12 @@ from ai_translator.book import ContentType
 
 
 class PDFTranslator:
+    language = {
+        "English": "英文",
+        "中文": "中文",
+        "にほんご": "日语"
+    }
+
     def __init__(self, model: Model):
         self.model = model
         self.pdf_parser = PDFParser()
@@ -15,6 +21,7 @@ class PDFTranslator:
 
     def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文', output_file_path: str = None, pages: Optional[int] = None):
         self.book = self.pdf_parser.parse_pdf(pdf_file_path, pages)
+        target_language = self.language.get(target_language)
 
         for page_idx, page in enumerate(self.book.pages):
             for content_idx, content in enumerate(page.contents):
@@ -22,14 +29,14 @@ class PDFTranslator:
                 LOG.debug(prompt)
 
                 # 调试用，不调用API
-                translation = content.original
-                status = True
-                if content.content_type == ContentType.TEXT:
-                    translation = PDFTranslator.TEXT_TRASACTION_RESULT
-                elif content.content_type == ContentType.TABLE:
-                    translation = PDFTranslator.TABLE_TRASACTION_RESULT
+                # translation = content.original
+                # status = True
+                # if content.content_type == ContentType.TEXT:
+                #     translation = PDFTranslator.TEXT_TRASACTION_RESULT
+                # elif content.content_type == ContentType.TABLE:
+                #     translation = PDFTranslator.TABLE_TRASACTION_RESULT
 
-                # translation, status = self.model.make_request(prompt)
+                translation, status = self.model.make_request(prompt)
                 LOG.info(translation)
                 
                 # Update the content in self.book.pages directly

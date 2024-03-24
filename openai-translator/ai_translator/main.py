@@ -41,21 +41,17 @@ def translate():
 
     # Check if file type is allowed
     if file and allowed_file(file.filename):
-        source_lang = request.form.get('source_lang')
         target_lang = request.form.get('target_lang')
         target_format = request.form.get('target_format')
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
 
-        model = OpenAIModel(model='OpenAIModel', api_key=os.getenv("OPENAI_API_KEY"))
+        model = OpenAIModel(model='gpt-3.5-turbo', api_key=os.getenv("OPENAI_API_KEY"))
         pdf_file_path = file_path
         file_format = target_format
         # 实例化 PDFTranslator 类，并调用 translate_pdf() 方法
         translator = PDFTranslator(model)
-        output_file_path = translator.translate_pdf(pdf_file_path, file_format)
-
-        # flash('Translation successful. File saved as ' + os.path.dirname(os.path.abspath(__file__)) + '/' + output_file_path)
-        # return render_template('index.html')
+        output_file_path = translator.translate_pdf(pdf_file_path, file_format, target_lang)
 
         result = {
             "message": "Translation successful",
