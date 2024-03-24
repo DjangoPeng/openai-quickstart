@@ -47,10 +47,13 @@ class TableContent(Content):
                 raise ValueError(f"Invalid translation type. Expected str, but got {type(translation)}")
             LOG.debug(translation)
             # Convert the string to a list of lists
-            table_data = [row.strip().split() for row in translation.strip().split('\n')]
+            table_data = [row.strip().split('|') for row in translation.strip().split('\n')]
+            LOG.debug(table_data)
+            # Remove empty strings and whitespace from table_data
+            table_data = [[cell.strip() for cell in row] for row in table_data]
             LOG.debug(table_data)
             # Create a DataFrame from the table_data
-            translated_df = pd.DataFrame(table_data[2:], columns=table_data[0])
+            translated_df = pd.DataFrame([row[1:-1] for row in table_data[2:]], columns=table_data[0][1:-1])
             LOG.debug(translated_df)
             self.translation = translated_df
             self.status = status
