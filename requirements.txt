@@ -1,9 +1,11 @@
 openai==1.14.2
-langchain==0.1.13
 tiktoken
 matplotlib
 plotly
 numpy
 scikit-learn
 pandas
+langchain==0.1.13
+langchain-openai==0.1.1
+chromadb==0.4.24
 gradio
