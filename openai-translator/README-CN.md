@@ -44,24 +44,37 @@ OpenAI 翻译器目前还处于早期开发阶段，我正在积极地添加更�
 
 ### 环境准备
 
-1.克隆仓库 `git clone git@github.com:DjangoPeng/openai-translator.git`。
+1. 克隆仓库代码
+```bash
+git clone git@github.com:DjangoPeng/openai-translator.git
+```
 
-2.OpenAI-翻译器 需要 Python 3.6 或更高版本。使用 `pip install -r requirements.txt` 安装依赖项。
+2. 准备python环境.
+- 版本要求 **python > 3.10.13**
+  - 无独立环境请移步 [miniconda安装管理python](../docs/FAQ/miniconda%E5%AE%89%E8%A3%85python.md)
+- 安装依赖(确保你已经使用miniConda创建了python环境myenv, 并且激活了myenv环境)
+```bash
+pip install -r requirements.txt
+```
 
-3.设置您的 OpenAI API 密钥(`$OPENAI_API_KEY`)或 ChatGLM 模型 URL(`$GLM_MODEL_URL`)。您可以将其添加到环境变量中，或者在 config.yaml 文件中指定。
+3. 启动翻译程序
 
-### 使用示例
+下列启动方式多选一即可
+- 命令行方式启动(推荐), 使用OpenAI模型
+```bash
+# 把您的 OPENAI_API_KEY 替换为你具体的API_KEY
+export OPENAI_API_KEY="sk-xxx"
+python ai_translator/main.py --model_type OpenAIModel --openai_api_key $OPENAI_API_KEY --file_format markdown --book tests/test.pdf --openai_model gpt-3.5-turbo
+```
+即可看到结果
+![sample_out](images/sample_image_1.png)
 
-您可以通过指定配置文件或提供命令行参数来使用 OpenAI-翻译器。
-
-#### 使用配置文件
-
+- yaml配置文件方式启动, 使用OpenAI模型
 根据您的设置调整 `config.yaml` 文件：
-
 ```yaml
 OpenAIModel:
   model: "gpt-3.5-turbo"
-  api_key: "your_openai_api_key"
+  api_key: "sk-xxx"
 
 GLMModel:
   model_url: "your_chatglm_model_url"
@@ -71,29 +84,13 @@ common:
   book: "test/test.pdf"
   file_format: "markdown"
 ```
-
-然后命令行直接运行：
-
+执行命令
 ```bash
-python ai_translator/main.py
+python ai_translator/main.py --config config.yaml --model_type OpenAIModel
 ```
 
-![sample_out](images/sample_image_1.png)
-
-#### 使用命令行参数
-
-您也可以直接在命令行上指定设置。这是使用 OpenAI 模型的例子：
-
+- 命令行方式启动, 使用GLM模型
 ```bash
-# 将您的 api_key 设置为环境变量
-export OPENAI_API_KEY="sk-xxx"
-python ai_translator/main.py --model_type OpenAIModel --openai_api_key $OPENAI_API_KEY --file_format markdown --book tests/test.pdf --openai_model gpt-3.5-turbo
-```
-
-这是使用 GLM 模型的例子：
-
-```bash
-# 将您的 GLM 模型 URL 设置为环境变量
 export GLM_MODEL_URL="http://xxx:xx"
 python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book tests/test.pdf 
 ```

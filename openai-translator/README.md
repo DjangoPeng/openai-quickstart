@@ -43,26 +43,38 @@ The OpenAI Translator is still in its early stages of development, and I'm activ
 
 ## Getting Started
 
-### Environment Setup
+### Quick Start
 
-1.Clone the repository `git clone git@github.com:DjangoPeng/openai-translator.git`.
+1. Clone the repository:
+```bash
+git clone git@github.com:DjangoPeng/openai-translator.git
+```
 
-2.The `OpenAI-Translator` requires Python 3.6 or later. Install the dependencies with `pip install -r requirements.txt`.
+2. Prepare the Python environment:
+- Required Python version: python > 3.10.13
+  - If you don’t have a separate environment, please refer to [Install and Manage Python with Miniconda](../docs/FAQ/miniconda%E5%AE%89%E8%A3%85python.md)
+- Install dependencies (make sure you have created a Python environment named myenv with Miniconda and activated it)
+```bash
+pip install -r requirements.txt
+```
 
-3.Set up your OpenAI API key(`$OPENAI_API_KEY`) or ChatGLM Model URL(`$GLM_MODEL_URL`). You can either add it to your environment variables or specify it in the config.yaml file.
+3. Start the translation program
+Choose one of the following methods to start:
 
-### Usage
+- Command-line startup (recommended), using the OpenAI model:
+```bash
+# Replace 'sk-xxx' with your actual OPENAI_API_KEY
+export OPENAI_API_KEY="sk-xxx"
+python ai_translator/main.py --model_type OpenAIModel --openai_api_key $OPENAI_API_KEY --file_format markdown --book tests/test.pdf --openai_model gpt-3.5-turbo
+```
+You will see the result:
+![sample_out](images/sample_image_1.png)
 
-You can use OpenAI-Translator either by specifying a configuration file or by providing command-line arguments.
-
-#### Using a configuration file:
-
-Adapt `config.yaml` file with your settings:
-
+- YAML configuration file startup, using the OpenAI model Adjust the config.yaml file according to your settings:
 ```yaml
 OpenAIModel:
   model: "gpt-3.5-turbo"
-  api_key: "your_openai_api_key"
+  api_key: "sk-xxx"
 
 GLMModel:
   model_url: "your_chatglm_model_url"
@@ -73,31 +85,18 @@ common:
   file_format: "markdown"
 ```
 
-Then run the tool:
-
+Execute the command:
 ```bash
-python ai_translator/main.py
+python ai_translator/main.py --config config.yaml --model_type OpenAIModel
 ```
 
-![sample_out](images/sample_image_1.png)
-
-#### Using command-line arguments:
-
-You can also specify the settings directly on the command line. Here's an example of how to use the OpenAI model:
-
+- Command-line startup, using the GLM model:
 ```bash
-# Set your api_key as an env variable
-export OPENAI_API_KEY="sk-xxx"
-python ai_translator/main.py --model_type OpenAIModel --openai_api_key $OPENAI_API_KEY --file_format markdown --book tests/test.pdf --openai_model gpt-3.5-turbo
-```
-
-And an example of how to use the GLM model:
-
-```bash
-# Set your GLM Model URL as an env variable
 export GLM_MODEL_URL="http://xxx:xx"
-python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book tests/test.pdf
+python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book tests/test.pdf 
 ```
+
+
 
 ## License
 

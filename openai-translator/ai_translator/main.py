@@ -18,6 +18,8 @@ if __name__ == "__main__":
     api_key = args.openai_api_key if args.openai_api_key else config['OpenAIModel']['api_key']
     model = OpenAIModel(model=model_name, api_key=api_key)
 
+    if args.model_type == 'OpenAIModel' and model_name and not api_key:
+        raise Exception("--openai_model and --openai_api_key is required when using OpenAIModel")
 
     pdf_file_path = args.book if args.book else config['common']['book']
     file_format = args.file_format if args.file_format else config['common']['file_format']
