@@ -14,6 +14,4 @@ class ArgumentParser:
 
     def parse_arguments(self):
         args = self.parser.parse_args()
-        if args.model_type == 'OpenAIModel' and not args.openai_model and not args.openai_api_key:
-            self.parser.error("--openai_model and --openai_api_key is required when using OpenAIModel")
         return args
