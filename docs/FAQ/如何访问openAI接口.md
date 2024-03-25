@@ -1,8 +1,10 @@
 # 如何访问openAI接口
+本文只提供学习用.商用请使用正规国内代理, 代理商提供的服务
 
 ## 解法1. 使用国内代理api
 使用国内代理api即可. 将域名替换即可. api.openai.com -> api.openai-proxy.com
 风险提示: 由于是第三方代理, 因此可以作为测试学习用. !!!不要作为生产用以防key被盗用!!!!!!
+
 ```python
 client = OpenAI(
   base_url='https://api.openai-proxy.com/v1'
