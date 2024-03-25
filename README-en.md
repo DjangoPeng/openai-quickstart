@@ -30,20 +30,60 @@ Then navigate to the directory and follow the individual module instructions to 
 
 ## Setting Up the Development Environment
 
-- Python v3.10+
-- Python Environment Management: [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
-- Interactive Python Development Environment: [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
-- Framework for Large Model Applications: [LangChain](https://python.langchain.com/docs/get_started/installation)
+This project is developed using Python v3.10. For a complete list of Python dependency packages, see [requirements.txt](requirements.txt).
+
+Official documentation for key dependencies is as follows:
+
+- Python environment management with [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
+- Interactive Python development environment [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
+- Large model application development framework [LangChain](https://python.langchain.com/docs/get_started/installation)
 - [OpenAI Python SDK](https://github.com/openai/openai-python?tab=readme-ov-file#installation)
 
-### Configuring Jupyter Lab for Background Startup
 
-After installing the development environment as mentioned above, it's recommended to start Jupyter Lab as a background service. Here's how to configure it (using the root user as an example):
+**Below are detailed installation instructions (using Ubuntu OS as an example):**
+
+### Installing Miniconda
+
+```shell
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+```
+
+After installation, it is recommended to create a new Python virtual environment named `langchain`.
+
+```shell
+conda create -n langchain python=3.10
+
+# Activate the environment
+conda activate langchain 
+```
+
+This environment needs to be activated each time before use.
+
+
+### Installing Python Dependency Packages
+
+```shell
+pip install -r requirements.txt
+```
+
+### Configuring OpenAI API Key
+
+Depending on the command-line tool you use, set the `OPENAI_API_KEY` environment variable in `~/.bashrc` or `~/.zshrc`:
+
+```shell
+export OPENAI_API_KEY="xxxx"
+```
+
+### Installing and Configuring Jupyter Lab
+
+After the above development environment setup, use Miniconda to install Jupyter Lab:
 
 ```shell
 # Generate a Jupyter Lab configuration file
-$ jupyter lab --generate-config
-Writing default config to: /root/.jupyter/jupyter_lab_config.py
+jupyter lab --generate-config
 ```
 
 Open the configuration file and make the following changes:
@@ -61,6 +101,7 @@ $ nohup jupyter lab --port=8000 --NotebookApp.token='replace_with_your_password'
 ```
 
 Jupyter Lab's output log will be saved in the `nohup.out` file (which is already filtered in the `.gitignore` file).
+
 
 ## Schedule
 

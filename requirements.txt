@@ -1,0 +1,9 @@
+openai==1.14.2
+langchain==0.1.13
+tiktoken
+matplotlib
+plotly
+numpy
+scikit-learn
+pandas
+gradio

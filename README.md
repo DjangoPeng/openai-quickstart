@@ -17,7 +17,7 @@
 
 - **LLM技术栈与生态**：数据隐私与法律合规性，GPU技术选型指南，Hugging Face快速入门指南，ChatGLM的使用。
 
-## 入门
+## 拉取代码
 
 你可以通过克隆此仓库到你的本地机器来开始：
 
@@ -29,27 +29,72 @@ git clone https://github.com/DjangoPeng/openai-quickstart.git
 
 ## 搭建开发环境
 
-- Python v3.10+
+本项目使用 Python v3.10 开发，完整 Python 依赖软件包见[requirements.txt](requirements.txt)。
+
+关键依赖的官方文档如下：
+
 - Python 环境管理 [Miniconda](https://docs.conda.io/projects/miniconda/en/latest/)
 - Python 交互式开发环境 [Jupyter Lab](https://jupyterlab.readthedocs.io/en/stable/getting_started/installation.html)
 - 大模型应用开发框架 [LangChain](https://python.langchain.com/docs/get_started/installation)
-- [OpenAI Python SDK ](https://github.com/openai/openai-python?tab=readme-ov-file#installation)
+- [OpenAI Python SDK ](https://github.com/openai/openai-python?tab=readme-ov-file#installation) 
 
-### Jupyter Lab 后台启动配置
 
-上述开发环境安装完成后，建议使用后台常驻的方式来启动 Jupyter Lab。下面是相关配置（以 root 用户为例）：
+**以下是详细的安装指导（以 Ubuntu 操作系统为例）**：
+
+### 安装 Miniconda
+
+```shell
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+```
+
+安装完成后，建议新建一个 Python 虚拟环境，命名为 `langchain`。
+
+```shell
+conda create -n langchain python=3.10
+
+# 激活环境
+conda activate langchain 
+```
+
+之后每次使用需要激活此环境。
+
+
+### 安装 Python 依赖软件包
+
+```shell
+pip install -r requirements.txt
+```
+
+### 配置 OpenAI API Key
+
+根据你使用的命令行工具，在 `~/.bashrc` 或 `~/.zshrc` 中配置 `OPENAI_API_KEY` 环境变量：
+
+```shell
+export OPENAI_API_KEY="xxxx"
+```
+
+### 安装和配置 Jupyter Lab
+
+上述开发环境安装完成后，使用 Miniconda 安装 Jupyter Lab：
+
+```shell
+conda install -c conda-forge jupyterlab
+```
+
+使用 Jupyter Lab 开发的最佳实践是后台常驻，下面是相关配置（以 root 用户为例）：
 
 ```shell
 # 生成 Jupyter Lab 配置文件，
-$ jupyter lab --generate-config
-Writing default config to: /root/.jupyter/jupyter_lab_config.py
+jupyter lab --generate-config
 ```
 
-打开配置文件后，修改以下配置项：
+打开上面执行输出的`jupyter_lab_config.py`配置文件后，修改以下配置项：
 
 ```python
-# 非 root 用户启动，无需修改
-c.ServerApp.allow_root = True
+c.ServerApp.allow_root = True # 非 root 用户启动，无需修改
 c.ServerApp.ip = '*'
 ```
 
@@ -59,6 +104,8 @@ $ nohup jupyter lab --port=8000 --NotebookApp.token='替换为你的密码' --no
 ```
 
 Jupyter Lab 输出的日志将会保存在 `nohup.out` 文件（已在 .gitignore中过滤）。
+
+
 
 
 ## 课程表
