@@ -62,6 +62,7 @@ pip install -r requirements.txt
 Choose one of the following methods to start:
 
 - Command-line startup (recommended), using the OpenAI model:
+ps: For Windows system, please use the set command instead of the export command
 ```bash
 # Replace 'sk-xxx' with your actual OPENAI_API_KEY
 export OPENAI_API_KEY="sk-xxx"
@@ -91,6 +92,7 @@ python ai_translator/main.py --config config.yaml --model_type OpenAIModel
 ```
 
 - Command-line startup, using the GLM model:
+ps: For Windows system, please use the set command instead of the export command
 ```bash
 export GLM_MODEL_URL="http://xxx:xx"
 python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book tests/test.pdf 
