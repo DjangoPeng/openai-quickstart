@@ -1,0 +1,11 @@
+pdfplumber
+simplejson
+requests
+PyYAML
+pillow
+reportlab
+pandas
+loguru
+openai
+# 改造后添加需求
+flask
