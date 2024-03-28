@@ -9,7 +9,7 @@ class PDFParser:
     def __init__(self):
         pass
 
-    def parse_pdf(self, pdf_file_path: str, pages: Optional[int] = None) -> Book:
+    def parse_pdf(self, pdf_file_path: str, pre_name_write: str, pages: Optional[int] = None) -> Book:
         book = Book(pdf_file_path)
 
         with pdfplumber.open(pdf_file_path) as pdf:
@@ -27,6 +27,10 @@ class PDFParser:
                 # Store the original text content
                 raw_text = pdf_page.extract_text()
                 tables = pdf_page.extract_tables()
+                imgs = pdf_page.images
+
+
+
 
                 # Remove each cell's content from the original text
                 for table_data in tables:
@@ -45,6 +49,16 @@ class PDFParser:
                     page.add_content(text_content)
                     LOG.debug(f"[raw_text]\n {cleaned_raw_text}")
 
+                if imgs:
+                    for img in imgs:
+                        bbox = (img["x0"], img["top"], img["x1"], img["bottom"])
+                        cropped_page = pdf_page.crop(bbox)
+                        im = cropped_page.to_image(antialias=True)
+                        imgName = "pdf_img0.png"
+                        im.save(f"{pre_name_write}pdf_img0.png")
+                        img_content = Content(content_type=ContentType.IMAGE, original=imgName, translation=imgName)
+                        page.add_content(img_content)
+                        LOG.debug(f"[image]\n{img_content.translation}")
 
 
                 # Handling tables
@@ -54,5 +68,6 @@ class PDFParser:
                     LOG.debug(f"[table]\n{table}")
 
                 book.add_page(page)
+
 
         return book
