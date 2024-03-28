@@ -1,0 +1,13 @@
+OpenAIModel:
+  model: "gpt-3.5-turbo"
+  api_key: "You are api key"
+
+GLMModel:
+  model_url: "gpt-3.5-turbo"
+  timeout: 300
+
+common:
+  book: "tests/test.pdf"
+  file_format: "markdown"
+  pre_name_write: "tests/img/"
+  pre_name_read: "img/"
