@@ -1,6 +1,6 @@
 OpenAIModel:
   model: "gpt-3.5-turbo"
-  api_key: "You are api key"
+  api_key: "your_openai_api_key"
 
 GLMModel:
   model_url: "gpt-3.5-turbo"
