@@ -160,7 +160,10 @@ cython_debug/
 #.idea/
 
 # Presentation files of course
+nohup.out
+
 openai_api/data/fine_food_reviews_with_embeddings_1k_2146.csv
+
 # files of Vector Stores, e.g. Chroma
 *.pkl
 *.bin
