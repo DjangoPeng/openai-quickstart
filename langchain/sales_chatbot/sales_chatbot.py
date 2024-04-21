@@ -1,9 +1,9 @@
 import gradio as gr
 
-from langchain.embeddings.openai import OpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 
 def initialize_sales_bot(vector_store_dir: str="real_estates_sale"):
