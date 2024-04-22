@@ -1,19 +1,21 @@
+import os
+
 import gradio as gr
 
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 
 
 def initialize_sales_bot(vector_store_dir: str="real_estates_sale"):
-    db = FAISS.load_local(vector_store_dir, OpenAIEmbeddings())
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+    db = FAISS.load_local(vector_store_dir, OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY")), allow_dangerous_deserialization=True)
+    llm = ChatOpenAI(model_name="gpt-4", temperature=0.5, openai_api_key=os.getenv("OPENAI_API_KEY"))
     
     global SALES_BOT    
     SALES_BOT = RetrievalQA.from_chain_type(llm,
                                            retriever=db.as_retriever(search_type="similarity_score_threshold",
-                                                                     search_kwargs={"score_threshold": 0.8}))
+                                                                     search_kwargs={"score_threshold": 0.6}))
     # 返回向量数据库的检索结果
     SALES_BOT.return_source_documents = True
 
@@ -40,7 +42,7 @@ def sales_chat(message, history):
 def launch_gradio():
     demo = gr.ChatInterface(
         fn=sales_chat,
-        title="房产销售",
+        title="销售顾问（您可以提交关于房产、少儿编程培训相关的问题）",
         # retry_btn=None,
         # undo_btn=None,
         chatbot=gr.Chatbot(height=600),
