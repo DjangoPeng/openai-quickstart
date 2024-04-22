@@ -1,3 +1,6 @@
+# Ignore files in the tests directory
+openai-translator/tests/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -172,3 +175,6 @@ langchain/openai-translator/flask_temps/*
 .idea/
 
 uploads/
+
+#ipynb
+langchain/jupyter/*
