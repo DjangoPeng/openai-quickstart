@@ -1,4 +1,6 @@
 from typing import Optional
+
+from ai_translator.chain.translator_chain import TranslatorChain
 from ai_translator.model import Model
 from ai_translator.translator.pdf_parser import PDFParser
 from ai_translator.translator.writer import Writer
@@ -14,35 +16,56 @@ class PDFTranslator:
         "にほんご": "日语"
     }
 
-    def __init__(self, model: Model):
-        self.model = model
+    def __init__(self, model_name: str):
+        self.chain = TranslatorChain(model_name)
         self.pdf_parser = PDFParser()
         self.writer = Writer()
 
-    def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文', output_file_path: str = None, pages: Optional[int] = None):
+    def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文',
+                        output_file_path: str = None, pages: Optional[int] = None):
         self.book = self.pdf_parser.parse_pdf(pdf_file_path, pages)
+
         target_language = self.language.get(target_language)
 
         for page_idx, page in enumerate(self.book.pages):
             for content_idx, content in enumerate(page.contents):
-                prompt = self.model.translate_prompt(content, target_language)
-                LOG.debug(prompt)
-
-                # 调试用，不调用API
-                # translation = content.original
-                # status = True
-                # if content.content_type == ContentType.TEXT:
-                #     translation = PDFTranslator.TEXT_TRASACTION_RESULT
-                # elif content.content_type == ContentType.TABLE:
-                #     translation = PDFTranslator.TABLE_TRASACTION_RESULT
-
-                translation, status = self.model.make_request(prompt)
+                translation, status = self.chain.run(content.original, target_language)
                 LOG.info(translation)
-                
+
                 # Update the content in self.book.pages directly
                 self.book.pages[page_idx].contents[content_idx].set_translation(translation, status)
 
         return self.writer.save_translated_book(self.book, output_file_path, file_format)
+
+    # def __init__(self, model: Model):
+    #     self.model = model
+    #     self.pdf_parser = PDFParser()
+    #     self.writer = Writer()
+    # def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文', output_file_path: str = None, pages: Optional[int] = None):
+    #     self.book = self.pdf_parser.parse_pdf(pdf_file_path, pages)
+    #
+    #     target_language = self.language.get(target_language)
+    #
+    #     for page_idx, page in enumerate(self.book.pages):
+    #         for content_idx, content in enumerate(page.contents):
+    #             prompt = self.model.translate_prompt(content, target_language)
+    #             LOG.debug(prompt)
+    #
+    #             # 调试用，不调用API
+    #             # translation = content.original
+    #             # status = True
+    #             # if content.content_type == ContentType.TEXT:
+    #             #     translation = PDFTranslator.TEXT_TRASACTION_RESULT
+    #             # elif content.content_type == ContentType.TABLE:
+    #             #     translation = PDFTranslator.TABLE_TRASACTION_RESULT
+    #
+    #             translation, status = self.model.make_request(prompt)
+    #             LOG.info(translation)
+    #
+    #             # Update the content in self.book.pages directly
+    #             self.book.pages[page_idx].contents[content_idx].set_translation(translation, status)
+    #
+    #     return self.writer.save_translated_book(self.book, output_file_path, file_format)
 
     TABLE_TRASACTION_RESULT = "[水果, 颜色, 价格（美元）]\n" + \
                     "[苹果, 红色, 1.20]\n" + \

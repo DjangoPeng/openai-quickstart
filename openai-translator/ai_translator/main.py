@@ -46,11 +46,11 @@ def translate():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
 
-        model = OpenAIModel(model='gpt-3.5-turbo', api_key=os.getenv("OPENAI_API_KEY"))
+        # model = OpenAIModel(model='gpt-3.5-turbo', api_key=os.getenv("OPENAI_API_KEY"))
         pdf_file_path = file_path
         file_format = target_format
         # 实例化 PDFTranslator 类，并调用 translate_pdf() 方法
-        translator = PDFTranslator(model)
+        translator = PDFTranslator('gpt-3.5-turbo')
         output_file_path = translator.translate_pdf(pdf_file_path, file_format, target_lang)
 
         result = {
