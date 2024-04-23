@@ -1,5 +1,5 @@
 from typing import Optional
-
+import pandas as pd
 from ai_translator.chain.translator_chain import TranslatorChain
 from ai_translator.model import Model
 from ai_translator.translator.pdf_parser import PDFParser
@@ -21,7 +21,7 @@ class PDFTranslator:
         self.pdf_parser = PDFParser()
         self.writer = Writer()
 
-    def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文',
+    def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文', lang_style: str = '写实',
                         output_file_path: str = None, pages: Optional[int] = None):
         self.book = self.pdf_parser.parse_pdf(pdf_file_path, pages)
 
@@ -29,7 +29,11 @@ class PDFTranslator:
 
         for page_idx, page in enumerate(self.book.pages):
             for content_idx, content in enumerate(page.contents):
-                translation, status = self.chain.run(content.original, target_language)
+                # 如果content.original是DataFrame, 则转换为字符串
+                # if isinstance(content.original, pd.DataFrame):
+                #     content.original = content.original.to_string()
+
+                translation, status = self.chain.run(content.original, target_language, lang_style)
                 LOG.info(translation)
 
                 # Update the content in self.book.pages directly

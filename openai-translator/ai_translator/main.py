@@ -43,6 +43,7 @@ def translate():
     if file and allowed_file(file.filename):
         target_lang = request.form.get('target_lang')
         target_format = request.form.get('target_format')
+        lang_style = request.form.get('lang_style')
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
 
@@ -51,7 +52,7 @@ def translate():
         file_format = target_format
         # 实例化 PDFTranslator 类，并调用 translate_pdf() 方法
         translator = PDFTranslator('gpt-3.5-turbo')
-        output_file_path = translator.translate_pdf(pdf_file_path, file_format, target_lang)
+        output_file_path = translator.translate_pdf(pdf_file_path=pdf_file_path, file_format=file_format, target_language=target_lang, lang_style=lang_style)
 
         result = {
             "message": "Translation successful",
