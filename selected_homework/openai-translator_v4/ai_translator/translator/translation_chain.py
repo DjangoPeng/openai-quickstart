@@ -29,10 +29,9 @@ class TranslationChain:
             [system_message_prompt, human_message_prompt]
         )
 
-        # 为了翻译结果的稳定性，将 temperature 设置为 0
         chat = ChatGLM(
             endpoint_url="http://127.0.0.1:8000",
-            max_token=80000
+            max_token=8000
         )
 
         self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
