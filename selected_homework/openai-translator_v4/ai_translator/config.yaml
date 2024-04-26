@@ -1,0 +1,5 @@
+model_name: "chatglm2-6b"
+input_file: "tests/test.pdf"
+output_file_format: "markdown"
+source_language: "English"
+target_language: "Chinese"
