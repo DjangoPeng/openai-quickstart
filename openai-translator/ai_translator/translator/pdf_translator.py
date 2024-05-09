@@ -34,3 +34,9 @@ class PDFTranslator:
 
         output_file_path = self.writer.save_translated_book(self.book, pre_name_read, output_file_path, file_format)
         return output_file_path
+
+    def translate_to_text(self, source_text: str, target_language: str) -> str:
+        prompt = self.model.translate_prompt(source_text, target_language)
+        LOG.debug(prompt)
+        translation, status = self.model.make_request(prompt)
+        return translation

@@ -14,6 +14,27 @@ app = Flask(__name__)
 
 TEMP_FILE_DIR = "flask_temps/"
 
+@app.route('/translate', methods=['POST'])
+def translate():
+    try:
+        #input_file = request.files['input_file']
+        source_text = request.form.get['source_text', 'source_text']
+        source_language = request.form.get('source_language', 'English')
+        target_language = request.form.get('target_language', 'Chinese')
+
+        translation_text = Translator.translate_to_text(source_text=source_text, target_language=target_language)
+        response = {
+            'status': 'success',
+            'message': translation_text
+        }
+        return jsonify(response), 200
+
+    except Exception as e:
+        response = {
+            'status': 'error',
+            'message': str(e)
+        }
+        return jsonify(response), 400
 
 @app.route('/translation', methods=['POST'])
 def translation():
