@@ -1,6 +1,8 @@
 openai==1.20.0
 langchain==0.1.13
 langchain-openai==0.1.1
+langchain-core==0.1.33
+langchain-community==0.0.29
 langchain-experimental==0.0.55
 chromadb==0.4.24
 faiss-cpu==1.8.0
@@ -8,8 +10,9 @@ gradio==4.22.0
 unstructured==0.12.6
 google-search-results==2.4.2
 tiktoken==0.6.0
-matplotlib
-plotly
-numpy
-scikit-learn
-pandas
+docarray==0.40.0
+matplotlib==3.8.3
+plotly==5.20.0
+numpy==1.26.4
+scikit-learn==1.4.1.post1
+pandas==2.2.1
