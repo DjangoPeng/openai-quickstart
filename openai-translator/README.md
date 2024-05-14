@@ -33,10 +33,10 @@ The OpenAI Translator is still in its early stages of development, and I'm activ
 - [X] Flexible configuration through a YAML file or command-line arguments.
 - [X] Timeouts and error handling for robust translation operations.
 - [X] Modular and object-oriented design for easy customization and extension.
+- [x] Add support for other languages and translation directions.
 - [ ] Implement a graphical user interface (GUI) for easier use.
-- [ ] Add support for batch processing of multiple PDF files.
 - [ ] Create a web service or API to enable usage in web applications.
-- [ ] Add support for other languages and translation directions.
+- [ ] Add support for batch processing of multiple PDF files.
 - [ ] Add support for preserving the original layout and formatting of the source PDF.
 - [ ] Improve translation quality by using custom-trained translation models.
 
@@ -47,9 +47,9 @@ The OpenAI Translator is still in its early stages of development, and I'm activ
 
 1.Clone the repository `git clone git@github.com:DjangoPeng/openai-translator.git`.
 
-2.The `OpenAI-Translator` requires Python 3.6 or later. Install the dependencies with `pip install -r requirements.txt`.
+2.The `OpenAI-Translator` requires Python 3.10 or later. Install the dependencies with `pip install -r requirements.txt`.
 
-3.Set up your OpenAI API key(`$OPENAI_API_KEY`) or ChatGLM Model URL(`$GLM_MODEL_URL`). You can either add it to your environment variables or specify it in the config.yaml file.
+3.Set up your OpenAI API key(`$OPENAI_API_KEY`). You can either add it to your environment variables or specify it in the config.yaml file.
 
 ### Usage
 
@@ -60,17 +60,11 @@ You can use OpenAI-Translator either by specifying a configuration file or by pr
 Adapt `config.yaml` file with your settings:
 
 ```yaml
-OpenAIModel:
-  model: "gpt-3.5-turbo"
-  api_key: "your_openai_api_key"
-
-GLMModel:
-  model_url: "your_chatglm_model_url"
-  timeout: 300
-
-common:
-  book: "test/test.pdf"
-  file_format: "markdown"
+model_name: "gpt-3.5-turbo"
+input_file: "tests/test.pdf"
+output_file_format: "markdown"
+source_language: "English"
+target_language: "Chinese"
 ```
 
 Then run the tool:
@@ -88,15 +82,7 @@ You can also specify the settings directly on the command line. Here's an exampl
 ```bash
 # Set your api_key as an env variable
 export OPENAI_API_KEY="sk-xxx"
-python ai_translator/main.py --model_type OpenAIModel --openai_api_key $OPENAI_API_KEY --file_format markdown --book tests/test.pdf --openai_model gpt-3.5-turbo
-```
-
-And an example of how to use the GLM model:
-
-```bash
-# Set your GLM Model URL as an env variable
-export GLM_MODEL_URL="http://xxx:xx"
-python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_URL --book tests/test.pdf
+python ai_translator/main.py --model_name "gpt-3.5-turbo" --input_file "your_input.pdf" --output_file_format "markdown" --source_language "English" --target_language "Chinese"
 ```
 
 ## License
