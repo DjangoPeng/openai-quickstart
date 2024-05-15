@@ -6,6 +6,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
 )
+import pandas as pd
 
 from book import Book, ContentType
 from utils import LOG
@@ -14,13 +15,15 @@ class Writer:
     def __init__(self):
         pass
 
-    def save_translated_book(self, book: Book, output_file_path: str = None, file_format: str = "PDF"):
+    def save_translated_book(self, book: Book, pre_name_read: str,output_file_path: str = None, file_format: str = "PDF"):
         if file_format.lower() == "pdf":
-            self._save_translated_book_pdf(book, output_file_path)
+            output_file_path = self._save_translated_book_pdf(book, output_file_path)
         elif file_format.lower() == "markdown":
-            self._save_translated_book_markdown(book, output_file_path)
+            output_file_path = self._save_translated_book_markdown(book, pre_name_read, output_file_path)
         else:
             raise ValueError(f"Unsupported file format: {file_format}")
+
+        return output_file_path
 
     def _save_translated_book_pdf(self, book: Book, output_file_path: str = None):
         if output_file_path is None:
@@ -76,7 +79,7 @@ class Writer:
         doc.build(story)
         LOG.info(f"翻译完成: {output_file_path}")
 
-    def _save_translated_book_markdown(self, book: Book, output_file_path: str = None):
+    def _save_translated_book_markdown(self, book: Book, pre_name_read: str, output_file_path: str = None):
         if output_file_path is None:
             output_file_path = book.pdf_file_path.replace('.pdf', f'_translated.md')
 
@@ -95,14 +98,31 @@ class Writer:
                         elif content.content_type == ContentType.TABLE:
                             # Add table to the Markdown file
                             table = content.translation
+                            #df = pd.DataFrame(table)
+                            #markdown_table = table.to_markdown()
+                            output_file.write(table + '\n\n')
+                            '''
+                            LOG.warning(table)
                             header = '| ' + ' | '.join(str(column) for column in table.columns) + ' |' + '\n'
                             separator = '| ' + ' | '.join(['---'] * len(table.columns)) + ' |' + '\n'
                             # body = '\n'.join(['| ' + ' | '.join(row) + ' |' for row in table.values.tolist()]) + '\n\n'
                             body = '\n'.join(['| ' + ' | '.join(str(cell) for cell in row) + ' |' for row in table.values.tolist()]) + '\n\n'
+                            LOG.warning(body)
                             output_file.write(header + separator + body)
+                            '''
+                        elif content.content_type == ContentType.IMAGE:
+                            LOG.debug( content.translation )
+                            image = pre_name_read + content.translation
+                            markdown_text = f"![{image}]({image})"
+                            LOG.debug(image)
+                            LOG.debug(markdown_text)
+                            output_file.write(markdown_text)
+
+
 
                 # Add a page break (horizontal rule) after each page except the last one
-                if page != book.pages[-1]:
-                    output_file.write('---\n\n')
+                #if page != book.pages[-1]:
+                #    output_file.write('---\n\n')
 
         LOG.info(f"翻译完成: {output_file_path}")
+        return output_file_path
