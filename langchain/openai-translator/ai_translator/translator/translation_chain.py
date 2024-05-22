@@ -1,13 +1,8 @@
 from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 
-from langchain.prompts.chat import (
-    ChatPromptTemplate,
-    SystemMessagePromptTemplate,
-    HumanMessagePromptTemplate,
-)
-
 from utils import LOG
+from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
 
 class TranslationChain:
     def __init__(self, model_name: str = "gpt-3.5-turbo", verbose: bool = True):
