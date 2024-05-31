@@ -5,7 +5,7 @@ langchain-core==0.2.1
 langchain-community==0.2.0
 langchain-experimental==0.0.59
 langchain-text-splitters==0.2.0
-langsmith==0.1.62
+langsmith==0.1.65
 chromadb==0.4.24
 faiss-cpu==1.8.0
 gradio==4.22.0
