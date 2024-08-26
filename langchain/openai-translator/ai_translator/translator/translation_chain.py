@@ -1,32 +1,31 @@
-from langchain_openai import ChatOpenAI
+from langchain.prompts import PromptTemplate
+from langchain_community.llms import Ollama
 from langchain.chains import LLMChain
 
 from utils import LOG
-from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
 
 class TranslationChain:
-    def __init__(self, model_name: str = "gpt-3.5-turbo", verbose: bool = True):
+    def __init__(self, model_name: str = "gemma2:2b", verbose: bool = True):
         
-        # 翻译任务指令始终由 System 角色承担
-        template = (
-            """You are a translation expert, proficient in various languages. \n
-            Translates {source_language} to {target_language}."""
+        # 构造翻译任务提示词模板
+        template = """
+        You are a professional translator, skilled in a variety of areas of knowledge, renowned for rigorous content and format.
+
+        Task:
+        Translate {source_language} to {target_language} and keep the format. No more explanation.
+
+        Source Content:
+        {text}
+        """
+        # 构造 LangChain 提示词模板
+        translation_prompt = PromptTemplate(
+            input_variables=["source_language", "target_language", "text"],
+            template=template,
         )
-        system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
-        # 待翻译文本由 Human 角色输入
-        human_template = "{text}"
-        human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
+        llm = Ollama(model=model_name)
+        self.chain = LLMChain(llm=llm, prompt=translation_prompt)
 
-        # 使用 System 和 Human 角色的提示模板构造 ChatPromptTemplate
-        chat_prompt_template = ChatPromptTemplate.from_messages(
-            [system_message_prompt, human_message_prompt]
-        )
-
-        # 为了翻译结果的稳定性，将 temperature 设置为 0
-        chat = ChatOpenAI(model_name=model_name, temperature=0, verbose=verbose)
-
-        self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
 
     def run(self, text: str, source_language: str, target_language: str) -> (str, bool):
         result = ""

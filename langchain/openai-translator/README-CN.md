@@ -1,93 +1,111 @@
+以下是上面内容的中文翻译：
+
+---
+
 # OpenAI-Translator
 
 <p align="center">
-    <br> <a href="README.md"> English </a> | 中文
-</p>
-<p align="center">
-    <em>所有的代码和文档完全由 OpenAI 的 GPT-4 模型生成</em>
+    <br> <a href="README.md">English</a> | 中文
 </p>
 
 ## 介绍
 
-OpenAI 翻译器是一个使用 AI 技术将英文 PDF 书籍翻译成中文的工具。这个工具使用了大型语言模型 (LLMs)，如 ChatGLM 和 OpenAI 的 GPT-3 以及 GPT-3.5 Turbo 来进行翻译。它是用 Python 构建的，并且具有灵活、模块化和面向对象的设计。
+OpenAI Translator 是一个由 AI 驱动的翻译工具，旨在将英文 PDF 书籍翻译成中文。该工具利用了如 `Gemma`、`ChatGLM` 和 `gpt-3.5-turbo-instruct` 等大语言模型（LLMs）进行翻译。它是用 Python 构建的，具有灵活、模块化和面向对象的设计。
 
-## 为什么做这个项目
+## 项目缘由
 
-在现今的环境中，缺乏非商业而且有效的 PDF 翻译工具。很多用户有包含敏感数据的 PDF 文件，他们更倾向于不将其上传到公共商业服务网站，以保护隐私。这个项目就是为了解决这个问题，为需要翻译他们的 PDF 文件同时又要保护数据隐私的用户提供解决方案。
+在当前的环境中，缺乏非商业化但高效的 PDF 翻译工具。许多用户拥有包含敏感数据的 PDF 文档，他们不希望将这些文档上传到公共商业服务网站以保持隐私。本项目旨在解决这一问题，为需要翻译 PDF 的用户提供一个能够维护数据隐私的解决方案。
 
-## 示例结果
+### 示例结果
 
-OpenAI 翻译器目前还处于早期开发阶段，我正在积极地添加更多功能和改进其性能。我们非常欢迎任何反馈或贡献！
+OpenAI Translator 仍处于开发的早期阶段，我正在积极添加更多功能并提高其性能。我们欢迎任何反馈或贡献！
 
-![The_Old_Man_of_the_Sea](images/sample_image_0.png)
+![老人与海](images/sample_image_0.png)
 
 <p align="center">
     <em>"老人与海"</em>
 </p>
 
-## 特性
+## 功能
 
-- [X] 使用大型语言模型 (LLMs) 将英文 PDF 书籍翻译成中文。
-- [X] 支持 ChatGLM 和 OpenAI 模型。
-- [X] 通过 YAML 文件或命令行参数灵活配置。
-- [X] 对健壮的翻译操作进行超时和错误处理。
-- [X] 模块化和面向对象的设计，易于定制和扩展。
-- [x] 添加对其他语言和翻译方向的支持。
-- [ ] 实现图形用户界面 (GUI) 以便更易于使用。
-- [ ] 创建一个网络服务或 API，以便在网络应用中使用。
-- [ ] 添加对多个 PDF 文件的批处理支持。
-- [ ] 添加对保留源 PDF 的原始布局和格式的支持。
-- [ ] 通过使用自定义训练的翻译模型来提高翻译质量。
+- [X] 使用 LLMs 将英文 PDF 书籍翻译成中文。
+- [X] 支持 [Gemma 2](https://ai.google.dev/gemma/docs/model_card_2), [ChatGLM](https://github.com/THUDM/ChatGLM-6B) 和 [OpenAI](https://platform.openai.com/docs/models) 模型。
+- [X] 通过 YAML 文件或命令行参数进行灵活配置。
+- [X] 超时和错误处理功能确保翻译操作的稳健性。
+- [X] 模块化和面向对象的设计，便于定制和扩展。
+- [x] 支持其他语言和翻译方向。
+- [x] 实现图形用户界面（GUI），便于使用。
+- [x] 创建一个 Web 服务或 API，以便在 Web 应用中使用。
+- [X] 通过使用自定义训练的翻译模型提高翻译质量。
 
+## 入门指南
 
-## 开始使用
+### 环境设置
 
-### 环境准备
+1. 克隆仓库 `git clone git@github.com:DjangoPeng/openai-translator.git`。
 
-1.克隆仓库 `git clone git@github.com:DjangoPeng/openai-translator.git`。
+2. 切换到 `gemma` 分支 `git checkout gemma`。
 
-2.OpenAI-翻译器 需要 Python 3.10 或更高版本。使用 `pip install -r requirements.txt` 安装依赖项。
+3. OpenAI-Translator 需要 Python 3.10 或更高版本。使用 `pip install -r requirements.txt` 安装依赖。
 
-3.设置您的 OpenAI API 密钥(`$OPENAI_API_KEY`)。您可以将其添加到环境变量中，或者在 config.yaml 文件中指定。
+### 使用方法
 
-### 使用示例
+您可以通过指定配置文件或提供命令行参数来使用 OpenAI-Translator。
 
-您可以通过指定配置文件或提供命令行参数来使用 OpenAI-Translator 工具。
+#### 使用配置文件：
 
-#### 使用配置文件
-
-根据您的设置调整 `config.yaml` 文件：
+根据您的设置修改 `config.yaml` 文件：
 
 ```yaml
-model_name: "gpt-3.5-turbo"
+model_name: "gemma2:2b"
 input_file: "tests/test.pdf"
 output_file_format: "markdown"
 source_language: "English"
 target_language: "Chinese"
 ```
 
-然后命令行直接运行：
+然后运行工具：
 
 ```bash
 python ai_translator/main.py
 ```
 
-![sample_out](images/sample_image_1.png)
+![示例输出](images/sample_image_1.png)
 
-#### 使用命令行参数
+#### 使用 Gradio （图形界面）：
 
-您也可以直接在命令行上指定设置。这是使用 OpenAI 模型的例子：
+为了更便捷的用户体验，您可以使用 Gradio 启动 OpenAI-Translator 图形界面。这允许您通过 Web 界面与翻译器进行交互：
+
+```bash
+python ai_translator/gradio_server.py
+```
+
+这将打开一个本地 Web 界面，您可以在其中上传 PDF，选择模型并配置翻译设置。
+
+#### 使用 Flask Web Server （REST API）：
+
+要将翻译服务集成到 Web 应用中或以编程方式与之交互，您可以启动 Flask Web 服务器：
+
+```bash
+python ai_translator/flask_server.py
+```
+
+这将启动一个 REST API，您可以发送请求以翻译文档，允许与其他 Web 服务或应用程序集成。
+
+#### 使用命令行参数：
+
+您还可以直接在命令行上指定设置。以下是如何使用 `Gemma-2-2B` 模型的示例：
 
 ```bash
 # 将您的 api_key 设置为环境变量
-export OPENAI_API_KEY="sk-xxx"
-python ai_translator/main.py --model_name "gpt-3.5-turbo" --input_file "your_input.pdf" --output_file_format "markdown" --source_language "English" --target_language "Chinese"
+python ai_translator/main.py --model_name "gemma2:2b" --input_file "your_input.pdf" --output_file_format "markdown" --source_language "English" --target_language "Chinese"
 ```
+
+### 学习笔记本
+
+项目中还包含一个用于学习的 [Jupyter Notebook](./jupyter/translation_chain.ipynb)。此 Notebook 演示了如何使用 OpenAI Translator 的翻译链，并提供了详细的代码注释和示例，帮助用户更好地理解和使用该工具。通过此 Notebook，您可以更深入地了解翻译过程的每个步骤，并根据自己的需求进行实验和修改。
+
 
 ## 许可证
 
-该项目采用 GPL-3.0 许可证。有关详细信息，请查看 [LICENSE](LICENSE) 文件。
-
-
-
-
+本项目采用 Apache-2.0 许可证。详情请参阅 [LICENSE](LICENSE) 文件。
