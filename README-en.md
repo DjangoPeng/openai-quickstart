@@ -1,5 +1,14 @@
 # OpenAI Quickstart
 
+![GitHub stars](https://img.shields.io/github/stars/DjangoPeng/openai-quickstart?style=social)
+![GitHub forks](https://img.shields.io/github/forks/DjangoPeng/openai-quickstart?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/DjangoPeng/openai-quickstart?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/DjangoPeng/openai-quickstart)
+![GitHub language count](https://img.shields.io/github/languages/count/DjangoPeng/openai-quickstart)
+![GitHub top language](https://img.shields.io/github/languages/top/DjangoPeng/openai-quickstart)
+![GitHub last commit](https://img.shields.io/github/last-commit/DjangoPeng/openai-quickstart?color=red)
+![GitHub last commit](https://img.shields.io/github/last-commit/DjangoPeng/openai-quickstart?color=red)
+
 <p align="center">
     <br> English | <a href="README.md">中文</a>
 </p>

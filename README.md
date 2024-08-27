@@ -1,4 +1,12 @@
-# OpenAI 快速入门
+# 大模型（LLMs）应用开发快速入门指南
+
+![GitHub stars](https://img.shields.io/github/stars/DjangoPeng/openai-quickstart?style=social)
+![GitHub forks](https://img.shields.io/github/forks/DjangoPeng/openai-quickstart?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/DjangoPeng/openai-quickstart?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/DjangoPeng/openai-quickstart)
+![GitHub language count](https://img.shields.io/github/languages/count/DjangoPeng/openai-quickstart)
+![GitHub top language](https://img.shields.io/github/languages/top/DjangoPeng/openai-quickstart)
+![GitHub last commit](https://img.shields.io/github/last-commit/DjangoPeng/openai-quickstart?color=red)
 
 <p align="center">
     <br> <a href="README-en.md">English</a> | 中文
