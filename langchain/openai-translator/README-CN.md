@@ -28,7 +28,7 @@ OpenAI Translator 仍处于开发的早期阶段，我正在积极添加更多�
 
 ## 功能
 
-- [X] 使用 LLMs 将英文 PDF 书籍翻译成中文。
+- [X] 支持任意语言对之间的 PDF 电子书翻译。
 - [X] 支持 [Gemma 2](https://ai.google.dev/gemma/docs/model_card_2), [ChatGLM](https://github.com/THUDM/ChatGLM-6B) 和 [OpenAI](https://platform.openai.com/docs/models) 模型。
 - [X] 通过 YAML 文件或命令行参数进行灵活配置。
 - [X] 超时和错误处理功能确保翻译操作的稳健性。

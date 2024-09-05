@@ -28,7 +28,7 @@ The OpenAI Translator is still in its early stages of development, and I'm activ
 
 ## Features
 
-- [X] Translation of English PDF books to Chinese using LLMs.
+- [X] Translation between any languages using LLMs.
 - [X] Support for both [Gemma 2](https://ai.google.dev/gemma/docs/model_card_2), [ChatGLM](https://github.com/THUDM/ChatGLM-6B) and [OpenAI](https://platform.openai.com/docs/models) models.
 - [X] Flexible configuration through a YAML file or command-line arguments.
 - [X] Timeouts and error handling for robust translation operations.
