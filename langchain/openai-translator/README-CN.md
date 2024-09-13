@@ -1,6 +1,3 @@
-以下是上面内容的中文翻译：
-
----
 
 # OpenAI-Translator
 
