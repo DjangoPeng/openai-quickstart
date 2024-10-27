@@ -1,7 +1,9 @@
 import pandas as pd
+
 from enum import Enum, auto
 from PIL import Image as PILImage
 from utils import LOG
+from io import StringIO
 
 class ContentType(Enum):
     TEXT = auto()
@@ -30,6 +32,9 @@ class Content:
             return True
         return False
 
+    def __str__(self):
+        return self.original
+
 
 class TableContent(Content):
     def __init__(self, data, translation=None):
@@ -46,13 +51,16 @@ class TableContent(Content):
             if not isinstance(translation, str):
                 raise ValueError(f"Invalid translation type. Expected str, but got {type(translation)}")
 
-            LOG.debug(translation)
-            # Convert the string to a list of lists
-            table_data = [row.strip().split() for row in translation.strip().split('\n')]
-            LOG.debug(table_data)
-            # Create a DataFrame from the table_data
-            translated_df = pd.DataFrame(table_data[1:], columns=table_data[0])
-            LOG.debug(translated_df)
+            LOG.debug(f"[translation]\n{translation}")
+            # Extract column names from the first set of brackets
+            header = translation.split(']')[0][1:].split(', ')
+            # Extract data rows from the remaining brackets
+            data_rows = translation.split('] ')[1:]
+            # Replace Chinese punctuation and split each row into a list of values
+            data_rows = [row[1:-1].split(', ') for row in data_rows]
+            # Create a DataFrame using the extracted header and data
+            translated_df = pd.DataFrame(data_rows, columns=header)
+            LOG.debug(f"[translated_df]\n{translated_df}")
             self.translation = translated_df
             self.status = status
         except Exception as e:
