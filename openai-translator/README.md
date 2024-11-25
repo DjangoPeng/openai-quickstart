@@ -36,7 +36,7 @@ The OpenAI Translator is still in its early stages of development, and I'm activ
 - [ ] Implement a graphical user interface (GUI) for easier use.
 - [ ] Add support for batch processing of multiple PDF files.
 - [ ] Create a web service or API to enable usage in web applications.
-- [ ] Add support for other languages and translation directions.
+- [X] Add support for other languages and translation directions.
 - [ ] Add support for preserving the original layout and formatting of the source PDF.
 - [ ] Improve translation quality by using custom-trained translation models.
 

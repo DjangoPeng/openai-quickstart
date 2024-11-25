@@ -11,10 +11,35 @@ from book import Book, ContentType
 from utils import LOG
 
 class Writer:
-    def __init__(self):
-        pass
+    def __init__(self, target_language):
+        self.target_language = target_language
+
+    def _generate_output_file_path(self, book: Book, file_format: str = "PDF"):
+
+        output_file_path = book.pdf_file_path
+
+        output_file_dir = f'{os.path.dirname(output_file_path)}/{self.target_language}'
+        output_file_name = os.path.basename(output_file_path)
+
+        if not os.path.exists(output_file_dir):
+            os.makedirs(output_file_dir)
+
+        output_file_path = f'{output_file_dir}/{output_file_name}'
+        
+        if file_format.lower() == "pdf":
+            output_file_path = output_file_path.replace('.pdf', f'_{self.target_language}_translated.pdf')
+        elif file_format.lower() == "markdown":
+            output_file_path = output_file_path.replace('.pdf', f'_{self.target_language}_translated.md')
+        else:
+            raise ValueError(f"Unsupported file format: {file_format}")
+        
+        return output_file_path
 
     def save_translated_book(self, book: Book, output_file_path: str = None, file_format: str = "PDF"):
+
+        if output_file_path is None:
+            output_file_path = self._generate_output_file_path(book, file_format)
+
         if file_format.lower() == "pdf":
             self._save_translated_book_pdf(book, output_file_path)
         elif file_format.lower() == "markdown":
@@ -23,8 +48,6 @@ class Writer:
             raise ValueError(f"Unsupported file format: {file_format}")
 
     def _save_translated_book_pdf(self, book: Book, output_file_path: str = None):
-        if output_file_path is None:
-            output_file_path = book.pdf_file_path.replace('.pdf', f'_translated.pdf')
 
         LOG.info(f"pdf_file_path: {book.pdf_file_path}")
         LOG.info(f"开始翻译: {output_file_path}")
@@ -77,8 +100,6 @@ class Writer:
         LOG.info(f"翻译完成: {output_file_path}")
 
     def _save_translated_book_markdown(self, book: Book, output_file_path: str = None):
-        if output_file_path is None:
-            output_file_path = book.pdf_file_path.replace('.pdf', f'_translated.md')
 
         LOG.info(f"pdf_file_path: {book.pdf_file_path}")
         LOG.info(f"开始翻译: {output_file_path}")
