@@ -11,6 +11,9 @@ if __name__ == "__main__":
     argument_parser = ArgumentParser()
     args = argument_parser.parse_arguments()
 
+    # 设置 OpenAI API Key
+    os.environ["OPENAI_API_KEY"] = args.api_key    
+
     # 初始化配置单例
     config = TranslationConfig()
     config.initialize(args)    
