@@ -4,6 +4,7 @@ langchain-openai==0.3.7
 langchain-core==0.3.40
 langchain-community==0.3.18
 langchain-experimental==0.3.4
+langchain_chroma==0.2.2
 langchain-text-splitters==0.3.6
 langsmith==0.3.11
 chromadb==0.6.3
