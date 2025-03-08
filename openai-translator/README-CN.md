@@ -46,9 +46,20 @@ OpenAI 翻译器目前还处于早期开发阶段，我正在积极地添加更�
 
 1.克隆仓库 `git clone git@github.com:DjangoPeng/openai-translator.git`。
 
-2.OpenAI-翻译器 需要 Python 3.6 或更高版本。使用 `pip install -r requirements.txt` 安装依赖项。
+2.OpenAI-翻译器 需要 Python 3.6 或更高版本。建议新建一个 Python 虚拟环境，命名为 `translater`。
 
-3.设置您的 OpenAI API 密钥(`$OPENAI_API_KEY`)或 ChatGLM 模型 URL(`$GLM_MODEL_URL`)。您可以将其添加到环境变量中，或者在 config.yaml 文件中指定。
+```shell
+conda create -n translater python=3.10
+
+# 激活环境
+conda activate translater 
+```
+
+之后每次使用需要激活此环境。
+
+3.使用 `pip install -r requirements.txt` 安装依赖项。
+
+4.设置您的 OpenAI API 密钥(`$OPENAI_API_KEY`)或 ChatGLM 模型 URL(`$GLM_MODEL_URL`)。您可以将其添加到环境变量中，或者在 config.yaml 文件中指定。
 
 ### 使用示例
 
@@ -101,7 +112,6 @@ python ai_translator/main.py --model_type GLMModel --glm_model_url $GLM_MODEL_UR
 ## 许可证
 
 该项目采用 GPL-3.0 许可证。有关详细信息，请查看 [LICENSE](LICENSE) 文件。
-
 
 
 
