@@ -1,5 +1,6 @@
 from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
+from langchain.llms import ChatGLM
 
 from utils import LOG
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
@@ -25,6 +26,9 @@ class TranslationChain:
 
         # 为了翻译结果的稳定性，将 temperature 设置为 0
         chat = ChatOpenAI(model_name=model_name, temperature=0, verbose=verbose)
+        if model_name == "chat_glm":
+            endpoint_url = ("http://127.0.0.1:8000")  # endpoint_url 填写跑模型的地址
+            chat = ChatGLM(endpoint_url=endpoint_url, temperature=0, verbose=verbose)
 
         self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
 
