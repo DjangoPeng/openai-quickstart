@@ -1,5 +1,12 @@
 from langchain_openai import ChatOpenAI
-from langchain.chains import LLMChain
+# 旧代码
+# from langchain.chains import LLMChain
+
+# 新代码
+from langchain.globals import set_verbose
+from langchain.globals import set_debug
+
+set_verbose(False)
 
 from utils import LOG
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
@@ -26,16 +33,29 @@ class TranslationChain:
         # 为了翻译结果的稳定性，将 temperature 设置为 0
         chat = ChatOpenAI(model_name=model_name, temperature=0, verbose=verbose)
 
-        self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
+        # 旧代码
+        # self.chain = LLMChain(llm=chat, prompt=chat_prompt_template, verbose=verbose)
+
+        # 新代码
+        set_debug(verbose)
+        self.chain = chat_prompt_template | chat
 
     def run(self, text: str, source_language: str, target_language: str) -> (str, bool):
         result = ""
         try:
-            result = self.chain.run({
+            # 新代码
+            result = self.chain.invoke({
                 "text": text,
                 "source_language": source_language,
                 "target_language": target_language,
-            })
+            }).content
+            # 旧代码
+            # result = self.chain.run({
+            #     "text": text,
+            #     "source_language": source_language,
+            #     "target_language": target_language,
+            # })
+
         except Exception as e:
             LOG.error(f"An error occurred during translation: {e}")
             return result, False
