@@ -1,0 +1,387 @@
+2024-04-15 18:18:42.709 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:18:42.717 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:18:51.009 | DEBUG    | book.content:set_translation:54 - [translation]
+[水果，颜色，价格（美元）] [苹果，红色，1.20] [香蕉，黄色，0.50] [橙子，橙色，0.80] [草莓，红色，2.50] [蓝莓，蓝色，3.00] [猕猴桃，绿色，1.00] [芒果，橙色，1.50] [葡萄，紫色，2.00]
+2024-04-15 18:18:51.009 | DEBUG    | book.content:set_translation:63 - [translated_df]
+  水果，颜色，价格（美元）
+0    苹果，红色，1.2
+1    香蕉，黄色，0.5
+2    橙子，橙色，0.8
+3    草莓，红色，2.5
+4    蓝莓，蓝色，3.0
+5   猕猴桃，绿色，1.0
+6    芒果，橙色，1.5
+7   葡萄，紫色，2.00
+2024-04-15 18:18:51.018 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:18:51.018 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/test_translated.md
+2024-04-15 18:18:51.019 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/test_translated.md
+2024-04-15 18:27:27.839 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:27:27.847 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:27:36.614 | DEBUG    | book.content:set_translation:54 - [translation]
+[水果，颜色，价格（美元）] [苹果，红色，1.20] [香蕉，黄色，0.50] [橙子，橙色，0.80] [草莓，红色，2.50] [蓝莓，蓝色，3.00] [猕猴桃，绿色，1.00] [芒果，橙色，1.50] [葡萄，紫色，2.00]
+2024-04-15 18:27:36.617 | DEBUG    | book.content:set_translation:63 - [translated_df]
+  水果，颜色，价格（美元）
+0    苹果，红色，1.2
+1    香蕉，黄色，0.5
+2    橙子，橙色，0.8
+3    草莓，红色，2.5
+4    蓝莓，蓝色，3.0
+5   猕猴桃，绿色，1.0
+6    芒果，橙色，1.5
+7   葡萄，紫色，2.00
+2024-04-15 18:27:36.617 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:27:36.617 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/test_translated.md
+2024-04-15 18:27:36.623 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/test_translated.md
+2024-04-15 18:31:50.723 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:31:50.730 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:31:58.115 | DEBUG    | book.content:set_translation:54 - [translation]
+[水果，颜色，价格（美元）] [苹果，红色，1.20] [香蕉，黄色，0.50] [橙子，橙色，0.80] [草莓，红色，2.50] [蓝莓，蓝色，3.00] [猕猴桃，绿色，1.00] [芒果，橙色，1.50] [葡萄，紫色，2.00]
+2024-04-15 18:31:58.115 | DEBUG    | book.content:set_translation:63 - [translated_df]
+  水果，颜色，价格（美元）
+0    苹果，红色，1.2
+1    香蕉，黄色，0.5
+2    橙子，橙色，0.8
+3    草莓，红色，2.5
+4    蓝莓，蓝色，3.0
+5   猕猴桃，绿色，1.0
+6    芒果，橙色，1.5
+7   葡萄，紫色，2.00
+2024-04-15 18:31:58.121 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:31:58.121 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/test_translated.md
+2024-04-15 18:31:58.123 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/test_translated.md
+2024-04-15 18:37:17.222 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ The Old Man and the Sea Asiaing.com
+The Old Man and the Sea
+By Ernest Hemingway
+www.Asiaing.com
+To Charlie Shribner
+And
+To Max Perkins
+He was an old man who fished alone in a skiff in the Gulf Stream and he had gone
+eighty-four days now without taking a fish. In the first forty days a boy had been with him.
+But after forty days without a fish the boy’s parents had told him that the old man was
+now definitely and finally salao, which is the worst form of unlucky, and the boy had gone
+at their orders in another boat which caught three good fish the first week. It made the
+boy sad to see the old man come in each day with his skiff empty and he always went
+down to help him carry either the coiled lines or the gaff and harpoon and the sail that
+was furled around the mast. The sail was patched with flour sacks and, furled, it looked
+like the flag of permanent defeat.
+The old man was thin and gaunt with deep wrinkles in the back of his neck. The
+brown blotches of the benevolent skin cancer the sun brings from its [9] reflection on the
+tropic sea were on his cheeks. The blotches ran well down the sides of his face and his
+hands had the deep-creased scars from handling heavy fish on the cords. But none of
+these scars were fresh. They were as old as erosions in a fishless desert.
+Everything about him was old except his eyes and they were the same color as the
+sea and were cheerful and undefeated.
+“Santiago,” the boy said to him as they climbed the bank from where the skiff was
+hauled up. “I could go with you again. We’ve made some money.”
+The old man had taught the boy to fish and the boy loved him.
+“No,” the old man said. “You’re with a lucky boat. Stay with them.”
+“But remember how you went eighty-seven days without fish and then we caught big
+ones every day for three weeks.”
+- 1 -
+2024-04-15 18:37:17.316 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ The Old Man and the Sea Asiaing.com
+“I remember,” the old man said. “I know you did not leave me because you doubted.”
+“It was papa made me leave. I am a boy and I must obey him.”
+“I know,” the old man said. “It is quite normal.”
+“He hasn’t much faith.”
+[10] “No,” the old man said. “But we have. Haven’t we?”
+“Yes,” the boy said. “Can I offer you a beer on the Terrace and then we’ll take the stuff
+home.”
+“Why not?” the old man said. “Between fishermen.”
+They sat on the Terrace and many of the fishermen made fun of the old man and he
+was noteangry. Others, of the older fishermen, looked at him and were sad. But they did
+not show it and they spoke politely about the current and the depths they had drifted
+their lines at and the steady good weather and of what they had seen. The successful
+fishermen of that day were already in and had butchered their marlin out and carried
+them laid full length across two planks, with two men staggering at the end of each plank,
+to the fish house where they waited for the ice truck to carry them to the market in
+Havana. Those who had caught sharks had taken them to the shark factory on the other
+side of the cove where they were hoisted on a block and tackle, their livers removed, their
+fins cut off and their hides skinned out and their flesh cut into strips for salting.
+When the wind was in the east a smell came across the harbour from the shark
+factory; but today there [11] was only the faint edge of the odour because the wind had
+backed into the north and then dropped off and it was pleasant and sunny on the Terrace.
+“Santiago,” the boy said.
+“Yes,” the old man said. He was holding his glass and thinking of many years ago.
+“Can I go out to get sardines for you for tomorrow?”
+“No. Go and play baseball. I can still row and Rogelio will throw the net.”
+“I would like to go. If I cannot fish with you. I would like to serve in some way.”
+“You bought me a beer,” the old man said. “You are already a man.”
+“How old was I when you first took me in a boat?”
+“Five and you nearly were killed when I brought the fish in too green and he nearly
+tore the boat to pieces. Can you remember?”
+“I can remember the tail slapping and banging and the thwart breaking and the
+noise of the clubbing. I can remember you throwing me into the bow where the wet coiled
+lines were and feeling the whole boat shiver and the noise of you clubbing him like
+chopping a tree down and the sweet blood smell all over me.”
+[12] “Can you really remember that or did I just tell it to you?”
+- 2 -
+2024-04-15 18:37:41.791 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:37:41.791 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/The_Old_Man_of_the_Sea_translated.md
+2024-04-15 18:37:41.791 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/The_Old_Man_of_the_Sea_translated.md
+2024-04-15 18:39:58.201 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ The Old Man and the Sea Asiaing.com
+The Old Man and the Sea
+By Ernest Hemingway
+www.Asiaing.com
+To Charlie Shribner
+And
+To Max Perkins
+He was an old man who fished alone in a skiff in the Gulf Stream and he had gone
+eighty-four days now without taking a fish. In the first forty days a boy had been with him.
+But after forty days without a fish the boy’s parents had told him that the old man was
+now definitely and finally salao, which is the worst form of unlucky, and the boy had gone
+at their orders in another boat which caught three good fish the first week. It made the
+boy sad to see the old man come in each day with his skiff empty and he always went
+down to help him carry either the coiled lines or the gaff and harpoon and the sail that
+was furled around the mast. The sail was patched with flour sacks and, furled, it looked
+like the flag of permanent defeat.
+The old man was thin and gaunt with deep wrinkles in the back of his neck. The
+brown blotches of the benevolent skin cancer the sun brings from its [9] reflection on the
+tropic sea were on his cheeks. The blotches ran well down the sides of his face and his
+hands had the deep-creased scars from handling heavy fish on the cords. But none of
+these scars were fresh. They were as old as erosions in a fishless desert.
+Everything about him was old except his eyes and they were the same color as the
+sea and were cheerful and undefeated.
+“Santiago,” the boy said to him as they climbed the bank from where the skiff was
+hauled up. “I could go with you again. We’ve made some money.”
+The old man had taught the boy to fish and the boy loved him.
+“No,” the old man said. “You’re with a lucky boat. Stay with them.”
+“But remember how you went eighty-seven days without fish and then we caught big
+ones every day for three weeks.”
+- 1 -
+2024-04-15 18:39:58.303 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ The Old Man and the Sea Asiaing.com
+“I remember,” the old man said. “I know you did not leave me because you doubted.”
+“It was papa made me leave. I am a boy and I must obey him.”
+“I know,” the old man said. “It is quite normal.”
+“He hasn’t much faith.”
+[10] “No,” the old man said. “But we have. Haven’t we?”
+“Yes,” the boy said. “Can I offer you a beer on the Terrace and then we’ll take the stuff
+home.”
+“Why not?” the old man said. “Between fishermen.”
+They sat on the Terrace and many of the fishermen made fun of the old man and he
+was noteangry. Others, of the older fishermen, looked at him and were sad. But they did
+not show it and they spoke politely about the current and the depths they had drifted
+their lines at and the steady good weather and of what they had seen. The successful
+fishermen of that day were already in and had butchered their marlin out and carried
+them laid full length across two planks, with two men staggering at the end of each plank,
+to the fish house where they waited for the ice truck to carry them to the market in
+Havana. Those who had caught sharks had taken them to the shark factory on the other
+side of the cove where they were hoisted on a block and tackle, their livers removed, their
+fins cut off and their hides skinned out and their flesh cut into strips for salting.
+When the wind was in the east a smell came across the harbour from the shark
+factory; but today there [11] was only the faint edge of the odour because the wind had
+backed into the north and then dropped off and it was pleasant and sunny on the Terrace.
+“Santiago,” the boy said.
+“Yes,” the old man said. He was holding his glass and thinking of many years ago.
+“Can I go out to get sardines for you for tomorrow?”
+“No. Go and play baseball. I can still row and Rogelio will throw the net.”
+“I would like to go. If I cannot fish with you. I would like to serve in some way.”
+“You bought me a beer,” the old man said. “You are already a man.”
+“How old was I when you first took me in a boat?”
+“Five and you nearly were killed when I brought the fish in too green and he nearly
+tore the boat to pieces. Can you remember?”
+“I can remember the tail slapping and banging and the thwart breaking and the
+noise of the clubbing. I can remember you throwing me into the bow where the wet coiled
+lines were and feeling the whole boat shiver and the noise of you clubbing him like
+chopping a tree down and the sweet blood smell all over me.”
+[12] “Can you really remember that or did I just tell it to you?”
+- 2 -
+2024-04-15 18:40:28.500 | DEBUG    | translator.writer:save_translated_book:18 - pdf
+2024-04-15 18:40:28.500 | INFO     | translator.writer:_save_translated_book_pdf:37 - 开始导出: tests/The_Old_Man_of_the_Sea_translated.pdf
+2024-04-15 18:40:28.601 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/The_Old_Man_of_the_Sea_translated.pdf
+2024-04-15 18:42:02.089 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:42:02.094 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:42:10.528 | DEBUG    | book.content:set_translation:54 - [translation]
+[水果，颜色，价格（美元）] [苹果，红色，1.20] [香蕉，黄色，0.50] [橙子，橙色，0.80] [草莓，红色，2.50] [蓝莓，蓝色，3.00] [猕猴桃，绿色，1.00] [芒果，橙色，1.50] [葡萄，紫色，2.00]
+2024-04-15 18:42:10.532 | DEBUG    | book.content:set_translation:63 - [translated_df]
+  水果，颜色，价格（美元）
+0    苹果，红色，1.2
+1    香蕉，黄色，0.5
+2    橙子，橙色，0.8
+3    草莓，红色，2.5
+4    蓝莓，蓝色，3.0
+5   猕猴桃，绿色，1.0
+6    芒果，橙色，1.5
+7   葡萄，紫色，2.00
+2024-04-15 18:42:10.532 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:42:10.532 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/test_translated.md
+2024-04-15 18:42:10.535 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/test_translated.md
+2024-04-15 18:47:28.169 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:47:28.172 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:47:37.289 | DEBUG    | book.content:set_translation:54 - [translation]
+# 水果，颜色，价格（美元）
+| 水果       | 颜色   | 价格（美元） |
+|------------|--------|--------------|
+| 苹果       | 红色   | 1.20         |
+| 香蕉       | 黄色   | 0.50         |
+| 橙子       | 橙色   | 0.80         |
+| 草莓       | 红色   | 2.50         |
+| 蓝莓       | 蓝色   | 3.00         |
+| 猕猴桃     | 绿色   | 1.00         |
+| 芒果       | 橙色   | 1.50         |
+| 葡萄       | 紫色   | 2.00         |
+2024-04-15 18:47:37.289 | DEBUG    | book.content:set_translation:63 - [translated_df]
+Empty DataFrame
+Columns: [ 水果，颜色，价格（美元）
+| 水果       | 颜色   | 价格（美元） |
+|------------|--------|--------------|
+| 苹果       | 红色   | 1.20         |
+| 香蕉       | 黄色   | 0.50         |
+| 橙子       | 橙色   | 0.80         |
+| 草莓       | 红色   | 2.50         |
+| 蓝莓       | 蓝色   | 3.00         |
+| 猕猴桃     | 绿色   | 1.00         |
+| 芒果       | 橙色   | 1.50         |
+| 葡萄       | 紫色   | 2.00         |]
+Index: []
+2024-04-15 18:47:37.289 | DEBUG    | translator.writer:save_translated_book:18 - deutsch
+2024-04-15 18:47:37.289 | ERROR    | translator.writer:save_translated_book:25 - 不支持文件类型: deutsch
+2024-04-15 18:52:35.224 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:52:35.230 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:52:44.169 | DEBUG    | book.content:set_translation:54 - [translation]
+[水果，颜色，价格（美元）] [苹果，红色，1.20] [香蕉，黄色，0.50] [橙子，橙色，0.80] [草莓，红色，2.50] [蓝莓，蓝色，3.00] [猕猴桃，绿色，1.00] [芒果，橙色，1.50] [葡萄，紫色，2.00]
+2024-04-15 18:52:44.169 | DEBUG    | book.content:set_translation:63 - [translated_df]
+  水果，颜色，价格（美元）
+0    苹果，红色，1.2
+1    香蕉，黄色，0.5
+2    橙子，橙色，0.8
+3    草莓，红色，2.5
+4    蓝莓，蓝色，3.0
+5   猕猴桃，绿色，1.0
+6    芒果，橙色，1.5
+7   葡萄，紫色，2.00
+2024-04-15 18:52:44.169 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:52:44.169 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/test_translated.md
+2024-04-15 18:52:44.177 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/test_translated.md
+2024-04-15 18:57:24.611 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ Test Data
+This dataset contains two test samples provided by ChatGPT, an AI language model by OpenAI.
+These samples include a markdown table and an English text passage, which can be used to test an
+English-to-Chinese translation software supporting both text and table formats.
+Text testing
+The quick brown fox jumps over the lazy dog. This pangram contains every letter of the English
+alphabet at least once. Pangrams are often used to test fonts, keyboards, and other text-related
+tools. In addition to English, there are pangrams in many other languages. Some pangrams are more
+difficult to construct due to the unique characteristics of the language.
+Table Testing
+2024-04-15 18:57:24.616 | DEBUG    | translator.pdf_parser:parse_pdf:54 - [table]
+[Fruit, Color, Price (USD)] [Apple, Red, 1.20] [Banana, Yellow, 0.50] [Orange, Orange, 0.80] [Strawberry, Red, 2.50] [Blueberry, Blue, 3.00] [Kiwi, Green, 1.00] [Mango, Orange, 1.50] [Grape, Purple, 2.00]
+2024-04-15 18:57:32.483 | DEBUG    | book.content:set_translation:54 - [translation]
+[Obst, Farbe, Preis (USD)] [Apfel, Rot, 1,20] [Banane, Gelb, 0,50] [Orange, Orange, 0,80] [Erdbeere, Rot, 2,50] [Blaubeere, Blau, 3,00] [Kiwi, Grün, 1,00] [Mango, Orange, 1,50] [Traube, Lila, 2,00]
+2024-04-15 18:57:32.488 | DEBUG    | book.content:set_translation:63 - [translated_df]
+        Obst   Farbe Preis (USD)
+0      Apfel     Rot         1,2
+1     Banane    Gelb         0,5
+2     Orange  Orange         0,8
+3   Erdbeere     Rot         2,5
+4  Blaubeere    Blau         3,0
+5       Kiwi    Grün         1,0
+6      Mango  Orange         1,5
+7     Traube    Lila        2,00
+2024-04-15 18:57:32.490 | DEBUG    | translator.writer:save_translated_book:18 - markdown
+2024-04-15 18:57:32.490 | INFO     | translator.writer:_save_translated_book_markdown:90 - 开始导出: tests/test_translated.md
+2024-04-15 18:57:32.491 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/test_translated.md
+2024-04-15 18:58:50.255 | DEBUG    | translator.pdf_parser:parse_pdf:46 - [raw_text]
+ The Old Man and the Sea Asiaing.com
+The Old Man and the Sea
+By Ernest Hemingway
+www.Asiaing.com
+To Charlie Shribner
+And
+To Max Perkins
+He was an old man who fished alone in a skiff in the Gulf Stream and he had gone
+eighty-four days now without taking a fish. In the first forty days a boy had been with him.
+But after forty days without a fish the boy’s parents had told him that the old man was
+now definitely and finally salao, which is the worst form of unlucky, and the boy had gone
+at their orders in another boat which caught three good fish the first week. It made the
+boy sad to see the old man come in each day with his skiff empty and he always went
+down to help him carry either the coiled lines or the gaff and harpoon and the sail that
+was furled around the mast. The sail was patched with flour sacks and, furled, it looked
+like the flag of permanent defeat.
+The old man was thin and gaunt with deep wrinkles in the back of his neck. The
+brown blotches of the benevolent skin cancer the sun brings from its [9] reflection on the
+tropic sea were on his cheeks. The blotches ran well down the sides of his face and his
+hands had the deep-creased scars from handling heavy fish on the cords. But none of
+these scars were fresh. They were as old as erosions in a fishless desert.
+Everything about him was old except his eyes and they were the same color as the
+sea and were cheerful and undefeated.
+“Santiago,” the boy said to him as they climbed the bank from where the skiff was
+hauled up. “I could go with you again. We’ve made some money.”
+The old man had taught the boy to fish and the boy loved him.
+“No,” the old man said. “You’re with a lucky boat. Stay with them.”
+“But remember how you went eighty-seven days without fish and then we caught big
+ones every day for three weeks.”
+- 1 -
+2024-04-15 18:59:06.165 | DEBUG    | translator.writer:save_translated_book:18 - pdf
+2024-04-15 18:59:06.165 | INFO     | translator.writer:_save_translated_book_pdf:37 - 开始导出: tests/The_Old_Man_of_the_Sea_translated.pdf
+2024-04-15 18:59:06.248 | INFO     | translator.writer:save_translated_book:28 - 翻译完成，文件保存至: tests/The_Old_Man_of_the_Sea_translated.pdf
